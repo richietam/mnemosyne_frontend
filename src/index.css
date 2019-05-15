@@ -33,8 +33,26 @@ code {
   width: 50%;
 }
 
-#navbar {
+.navBar {
   width: 100%;
-  background-color: black;
-  border-radius: 0px
+  background-color: #eeeeee;
+
+}
+
+a {
+  color: black;
+}
+a:hover {
+   color: red
+}
+
+#navlinks {
+  height: 50px;
+  display: grid;
+  width: 50%;
+  font-size: 12px;
+  font-color: black;
+  padding-top: 1.25%;
+  padding-left: 2%;
+  grid-template-columns:  repeat(4, 1fr);
 }
