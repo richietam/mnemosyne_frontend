@@ -2,7 +2,7 @@ import React from 'react'
 import { Card, Icon, Image } from 'semantic-ui-react'
 
 const CardExampleCard = (props) => (
-  console.log('props are',props) ||
+  
   <Card>
     <Image src={ props.users ? props.users.image : null } wrapped ui={false} />
     <Card.Content>

@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import { Button, Checkbox, Form, Icon } from 'semantic-ui-react'
 import Dropzone from 'react-dropzone'
 import UserCard from '../component/UserCard'
+import { connect } from 'react-redux'
 
-export default class NewUserForm extends Component {
+class NewUserForm extends Component {
 
   state = {
     username: "",
@@ -47,7 +48,7 @@ export default class NewUserForm extends Component {
   }
 
   render () {
-    console.log(this.state)
+    console.log('newUserForm', this.props.users)
     return (
       <Form id="form">
           <Form.Field>
@@ -89,3 +90,11 @@ export default class NewUserForm extends Component {
     )
   }
 }
+
+function mapStateToProps (state) {
+  return {
+    users: state.users
+  }
+}
+
+export default connect(mapStateToProps) (NewUserForm)

@@ -32,3 +32,9 @@ code {
   margin-bottom: 8%;
   width: 50%;
 }
+
+#navbar {
+  width: 100%;
+  background-color: black;
+  border-radius: 0px
+}
