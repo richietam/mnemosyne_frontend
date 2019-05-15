@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import NewUserForm from './container/NewUserForm'
 import { connect } from 'react-redux'
 import { Route, Switch } from 'react-router-dom'
+import NewUserForm from './container/NewUserForm'
 import Nav from './component/Nav'
+import Welcome from './container/Welcome'
 
 
 class App extends Component {
@@ -20,8 +21,13 @@ class App extends Component {
   render () {
     return (
       <div>
-        < Nav />
-        < NewUserForm />
+        < Nav changePage={this.changPage} />
+
+        <Switch>
+          <Route path='/newuser' render={() => <NewUserForm/>} />
+          <Route exact path='/' component={ Welcome } />
+          <Route component={ Welcome } />
+        </Switch>
       </div>
     );
   }
