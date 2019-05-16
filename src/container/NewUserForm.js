@@ -1,25 +1,34 @@
-import React, { Component } from 'react'
-import { Button, Checkbox, Form, Icon } from 'semantic-ui-react'
+import React, { Component, Fragment } from 'react'
+import { Button, Checkbox, Form, Icon, Header } from 'semantic-ui-react'
 import Dropzone from 'react-dropzone'
 import UserCard from '../component/UserCard'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router'
+import SubmitButton from '../component/SubmitButton'
 
 class NewUserForm extends Component {
 
   state = {
     username: "",
+    firstName: "",
+    lastName: "",
     file: null,
-    users: []
+    redirect: false
   }
 
   handleChange = (e) => {
     this.setState({
-      username: e.target.value
+      [e.target.name]: e.target.value
     })
   }
 
-  handleClick = () => {
+  handleClick = (e) => {
 
+    if (this.state.file === null){
+      alert("Please add an avatar")
+    }
+
+    if (this.state.file !== null && this.state.username) {
     let formData = new FormData()
     formData.append('username', this.state.username)
     formData.append('avatar', this.state.file)
@@ -28,8 +37,11 @@ class NewUserForm extends Component {
       method: 'POST',
       body: formData
       })
+    .then(this.setState({
+      redirect: true
+    }))
+    }
   }
-
 
   handleDrop = (droppedFiles) => {
     this.setState({
@@ -48,32 +60,53 @@ class NewUserForm extends Component {
   }
 
   render () {
-    console.log('newUserForm', this.props.users)
+    if (this.state.redirect) {
+     return <Redirect to='/home'/>;
+   }
+   console.log(this.state)
     return (
-      <Form id="form">
+      <Fragment>
+        <Form id="form">
+          <Header as='h2'>Create an Account</Header>
           <Form.Field>
-            <label>First Name</label>
             <input
+              id="inputField"
               placeholder='Username'
               onChange={this.handleChange}
               value={this.state.username}
+              name="username"
             />
-          </Form.Field>
-          <Form.Field>
-            <Checkbox label='I agree to the Terms and Conditions' />
+            <input
+              id="inputField"
+              placeholder='First Name'
+              onChange={this.handleChange}
+              value={this.state.firstName}
+              name="firstName"
+            />
+            <input
+              id="inputField"
+              placeholder='Last Name'
+              onChange={this.handleChange}
+              value={this.state.lastName}
+              name="lastName"
+            />
           </Form.Field>
 
           <Dropzone onDrop={this.handleDrop}>
-            {({getRootProps, getInputProps}) => (
+          {({getRootProps, getInputProps}) => (
             <section>
-              <div id="dropzone" {...getRootProps()}>
-                <input {...getInputProps()} />
-                <Icon name='file image outline' size='huge' id="fileImage" />
-                <p>Drag 'n' drop some files here, or click to select files</p>
-              </div>
+            <div id="dropzone" {...getRootProps()}>
+            <input {...getInputProps()} />
+            <Icon name='user circle' size='huge' id="fileImage" />
+            <p>Drag or click to select your profile picture!</p>
+            </div>
             </section>
-            )}
+          )}
           </Dropzone>
+
+          <Form.Field>
+            <Checkbox label='I agree to the Terms and Conditions' />
+          </Form.Field>
 
           <Button
             type='submit'
@@ -81,12 +114,12 @@ class NewUserForm extends Component {
           >
             Submit
           </Button>
-
+          
+      </Form>
       < UserCard
-        users={this.state.users[11]}
+      users={this.props.users.users[2]}
       />
-
-        </Form>
+      </Fragment>
     )
   }
 }

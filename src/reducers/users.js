@@ -9,7 +9,7 @@ function usersReducer(state = defaultState, action){
 
   switch(action.type){
     case "SET_USERS":
-      return {...state, users: [...state.users, action.payload]}
+      return {...state, users: action.payload}
     default:
       return state
   }

@@ -12,14 +12,30 @@ code {
     monospace;
 }
 
+a {
+  color: black;
+}
+a:hover {
+  color: red
+}
+
+
+/* **************************NEW USER FORM **************************** */
+
 #form {
   margin-left: 20%;
   margin-right: 20%;
-  margin-top: 10%;
+  margin-top: 5%;
+  background-color: #eeeeee;
+  padding: 50px;
+}
+
+#inputField {
+  margin-top: 3%;
 }
 
 #dropzone{
-  background-color: #EEEEEE;
+  background-color: #dddddd;
   padding: 15%;
   margin-bottom: 2%
 }
@@ -33,20 +49,91 @@ code {
   width: 50%;
 }
 
-.navBar {
-  width: 100%;
-  background-color: #eeeeee;
+/* ************************** Home Page **************************** */
+
+.WelcomeRight {
+  padding-top: 30%;
+  border-color: red;
+  border-style: solid;
+  height: 100%
+}
+
+.WelcomeLeft {
+  border-color: red;
+  padding: 6%;
+  border-style: solid;
+  height: 100%
+}
+
+#HomeButton {
+  background-color: ;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+/* ************************** Profile **************************** */
+
+#profile {
+  z-index: 1;
+  position: relative;
+  border-style: solid;
+  border-color: green;
+  height: 100%;
+  margin-top: -50px;
+}
+
+.ProfileMainImage {
+  z-index: 1;
+  position: relative;
+  border-style: solid;
+  border-color: blue;
+  height: 450px;
+  overflow:hidden;
+  clear:both;
+}
+
+#ProfileMainImageH1 {
+  position: absolute;
+  margin-top: 300px;
+  margin-left: 35%;
+}
+
+#ProfileMainImageH3 {
+  margin-left: 35%;
+  margin-top: 350px;
+  position: absolute;
+}
+
+#NewGalleryButton {
+  position: relative;
+  margin-bottom: 2%;
 
 }
 
-a {
-  color: black;
+/* ************************** Profile Card **************************** */
+
+
+#ProfileCard {
+  z-index: 2;
+  position: relative;
+  margin-left: 8%;
+  margin-top: -170px;
+  padding: 10px;
 }
-a:hover {
-   color: red
+
+#ProfileCardButton {
+  margin: 3%;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
+
+/* **************************Navigation Bar **************************** */
 
 #navlinks {
+  z-index: 9999;
+  position: relative;
   height: 50px;
   display: grid;
   width: 50%;
@@ -55,4 +142,63 @@ a:hover {
   padding-top: 1.25%;
   padding-left: 2%;
   grid-template-columns:  repeat(4, 1fr);
+
+}
+
+/* .navBar {
+  width: 100%;
+  background-color: #eeeeee;
+
+} */
+
+/* **************************NewsFeedTable **************************** */
+
+#NewsFeedTable {
+  padding: 10px;
+  position: relative;
+  margin-top: 25px;
+  width: 95%;
+}
+
+/* **************************Borders **************************** */
+
+#RedBorder {
+  border-style: solid;
+  border-color: red;
+}
+
+#Blue {
+  border-style: solid;
+  border-color: red;
+}
+
+/* **************************Gallery Cards **************************** */
+
+#GalleryCardsGrid {
+  border-style: solid;
+  border-color: blue;
+  padding: 5%;
+}
+
+#GalleryCardAvatar {
+  border-radius: 50%;
+  height: 25px;
+  width: 25px;
+  margin-right: 2%;
+}
+
+/* **************************New Gallery Form **************************** */
+
+
+.NewGalleryForm {
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 5%;
+  margin-bottom: 10%;
+  background-color: #eeeeee;
+  padding: 30px;
+}
+
+#NewGalleryFormButton {
+ margin-top: 3%;
 }
