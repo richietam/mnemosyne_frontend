@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux'
 import { Route, Switch } from 'react-router-dom'
 import NewUserForm from './container/NewUserForm'
 import Nav from './component/Nav'
 import Welcome from './container/Welcome'
+import Profile from './container/Profile'
 
 class App extends Component {
 
@@ -25,6 +26,8 @@ class App extends Component {
 
         <Switch>
           <Route path='/newuser' render={() => <NewUserForm/>} />
+          <Route path='/login' render={() => <NewUserForm/>} />
+          <Route path='/profile' render={() => <Profile/>} />
           <Route exact path='/' component={ Welcome } />
           <Route component={ Welcome } />
         </Switch>

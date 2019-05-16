@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Grid, Image, Header, Button, Icon } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 import WelcomeLeft from '../component/WelcomeLeft'
 import WelcomeRight from '../component/WelcomeRight'
 

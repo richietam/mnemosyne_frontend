@@ -12,14 +12,47 @@ code {
     monospace;
 }
 
+a {
+  color: black;
+}
+a:hover {
+  color: red
+}
+
+/* **************************Navigation Bar **************************** */
+
+#navlinks {
+  height: 50px;
+  display: grid;
+  width: 50%;
+  font-size: 12px;
+  font-color: black;
+  padding-top: 1.25%;
+  padding-left: 2%;
+  grid-template-columns:  repeat(4, 1fr);
+}
+
+.navBar {
+  width: 100%;
+  background-color: #eeeeee;
+
+}
+/* **************************NEW USER FORM **************************** */
+
 #form {
   margin-left: 20%;
   margin-right: 20%;
-  margin-top: 10%;
+  margin-top: 5%;
+  background-color: #eeeeee;
+  padding: 50px;
+}
+
+#inputField {
+  margin-top: 3%;
 }
 
 #dropzone{
-  background-color: #EEEEEE;
+  background-color: #dddddd;
   padding: 15%;
   margin-bottom: 2%
 }
@@ -33,29 +66,7 @@ code {
   width: 50%;
 }
 
-.navBar {
-  width: 100%;
-  background-color: #eeeeee;
-
-}
-
-a {
-  color: black;
-}
-a:hover {
-   color: red
-}
-
-#navlinks {
-  height: 50px;
-  display: grid;
-  width: 50%;
-  font-size: 12px;
-  font-color: black;
-  padding-top: 1.25%;
-  padding-left: 2%;
-  grid-template-columns:  repeat(4, 1fr);
-}
+/* ************************** Home Page **************************** */
 
 .WelcomeRight {
   padding-top: 30%;
@@ -69,4 +80,46 @@ a:hover {
   padding: 6%;
   border-style: solid;
   height: 100%
+}
+
+#HomeButton {
+  background-color: ;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+/* ************************** Profile **************************** */
+
+#profile {
+  border-style: solid;
+  border-color: red;
+  height: 100%;
+  padding-bottom: 200px;
+  margin-top: -50px;
+}
+
+.ProfileMainImage {
+  position: relative;
+  border-style: solid;
+  border-color: blue;
+  height: 400px;
+  overflow:hidden;
+  clear:both;
+}
+
+#ProfileMainImageH1 {
+  position: absolute;
+  margin-top: 200px;
+  margin-left: 35%;
+}
+
+#ProfileMainImageH3 {
+  margin-left: 35%;
+  margin-top: 250px;
+  position: absolute;
+}
+
+#ProfileCard {
+  margin-left: 8%;
+  margin-top: -170px;
 }

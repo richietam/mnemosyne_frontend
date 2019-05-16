@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Menu, Segment } from 'semantic-ui-react'
+// import { Segment } from 'semantic-ui-react'
 
 class Nav extends Component {
 
@@ -19,6 +19,11 @@ class Nav extends Component {
        <Link to='/newgallery'>
          New Gallery
        </Link>
+
+       <Link to='/profile'>
+         Profile
+       </Link>
+
       </div>
     </div>
      )
