@@ -5,7 +5,6 @@ import { Menu, Segment } from 'semantic-ui-react'
 class Nav extends Component {
 
   render() {
-
     return (
     <div className="navBar">
       <div className="navlinks" id="navlinks">

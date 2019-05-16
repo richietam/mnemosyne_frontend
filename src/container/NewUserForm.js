@@ -3,13 +3,14 @@ import { Button, Checkbox, Form, Icon } from 'semantic-ui-react'
 import Dropzone from 'react-dropzone'
 import UserCard from '../component/UserCard'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router'
 
 class NewUserForm extends Component {
 
   state = {
     username: "",
     file: null,
-    users: []
+    redirect: false
   }
 
   handleChange = (e) => {
@@ -18,8 +19,13 @@ class NewUserForm extends Component {
     })
   }
 
-  handleClick = () => {
+  handleClick = (e) => {
 
+    if (this.state.file === null){
+      alert("Please add an avatar")
+    }
+
+    if (this.state.file !== null && this.state.username) {
     let formData = new FormData()
     formData.append('username', this.state.username)
     formData.append('avatar', this.state.file)
@@ -28,8 +34,11 @@ class NewUserForm extends Component {
       method: 'POST',
       body: formData
       })
+    .then(this.setState({
+      redirect: true
+    }))
+    }
   }
-
 
   handleDrop = (droppedFiles) => {
     this.setState({
@@ -48,7 +57,11 @@ class NewUserForm extends Component {
   }
 
   render () {
-    console.log('newUserForm', this.props.users)
+    if (this.state.redirect) {
+     return <Redirect to='/home'/>;
+   }
+
+    console.log('newUserForm', this.props.users.users[0])
     return (
       <Form id="form">
           <Form.Field>
@@ -83,7 +96,7 @@ class NewUserForm extends Component {
           </Button>
 
       < UserCard
-        users={this.state.users[11]}
+        users={this.props.users.users[2]}
       />
 
         </Form>

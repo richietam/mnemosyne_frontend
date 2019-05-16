@@ -7,13 +7,13 @@ import NewUserForm from './container/NewUserForm'
 import Nav from './component/Nav'
 import Welcome from './container/Welcome'
 
-
 class App extends Component {
 
   componentDidMount () {
     fetch('http://localhost:3000/api/users')
       .then(res => res.json())
         .then( users => {
+          console.log('app response users are ', users)
           this.props.setUsers(users)
         })
   }
@@ -28,6 +28,7 @@ class App extends Component {
           <Route exact path='/' component={ Welcome } />
           <Route component={ Welcome } />
         </Switch>
+
       </div>
     );
   }
