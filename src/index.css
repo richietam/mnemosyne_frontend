@@ -186,3 +186,19 @@ a:hover {
   width: 25px;
   margin-right: 2%;
 }
+
+/* **************************New Gallery Form **************************** */
+
+
+.NewGalleryForm {
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 5%;
+  margin-bottom: 10%;
+  background-color: #eeeeee;
+  padding: 30px;
+}
+
+#NewGalleryFormButton {
+ margin-top: 3%;
+}

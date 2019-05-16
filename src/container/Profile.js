@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Grid, Image, Header, Button } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 import ProfileMainImage from '../component/ProfileMainImage'
 import NewsFeed from '../component/NewsFeed'
 import ProfileCard from '../component/ProfileCard'
@@ -38,9 +39,11 @@ class Profile extends Component {
         >
           <Header as='h2'>Matthew's Galleries:</Header>
           <div id="NewGalleryButton">
-            <Button>
-              New Gallery
-            </Button>
+          <Link to ='/newgallery'>
+          <Button id="HomeButton" >
+            <Button.Content visible>+ New Gallery</Button.Content>
+          </Button>
+          </Link>
           </div>
           <GalleryCards/>
         </Grid.Column>

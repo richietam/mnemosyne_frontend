@@ -13,7 +13,7 @@ const extra = (
 const GalleryCards = () => (
 
   <Card.Group itemsPerRow={4}>
-    <Card color='red' image={src} extra={extra} />
+    <Card color='red' onClick={true} image={src} extra={extra} />
     <Card color='orange' image={src} extra={extra} />
     <Card color='yellow' image={src} extra={extra} />
     <Card color='olive' image={src} extra={extra} />
