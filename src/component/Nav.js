@@ -16,12 +16,16 @@ class Nav extends Component {
          New User
        </Link>
 
-       <Link to='/newgallery'>
-         New Gallery
+       <Link to='/newalbum'>
+         New Album
        </Link>
 
        <Link to='/profile'>
          Profile
+       </Link>
+
+       <Link to='/album'>
+         Album
        </Link>
 
       </div>

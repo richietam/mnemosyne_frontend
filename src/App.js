@@ -7,7 +7,8 @@ import NewUserForm from './container/NewUserForm'
 import Nav from './component/Nav'
 import Welcome from './container/Welcome'
 import Profile from './container/Profile'
-import GalleryForm from './container/GalleryForm'
+import AlbumForm from './container/AlbumForm'
+import Album from './container/Album'
 
 class App extends Component {
 
@@ -29,7 +30,8 @@ class App extends Component {
           <Route path='/newuser' render={() => <NewUserForm/>} />
           <Route path='/login' render={() => <NewUserForm/>} />
           <Route path='/profile' render={() => <Profile/>} />
-          <Route path='/newgallery' render={() => <GalleryForm/>} />
+          <Route path='/newalbum' render={() => <AlbumForm/>} />
+          <Route path='/album' render={() => <Album/>} />
           <Route exact path='/' component={ Welcome } />
           <Route component={ Welcome } />
         </Switch>
