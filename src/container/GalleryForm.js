@@ -9,9 +9,10 @@ import PreviewGalleryCards from '../component/PreviewGalleryCards'
 class GalleryForm extends Component {
 
   state = {
-    albumName: "",
+    name: "",
     date: "",
-    file: null,
+    user_id: "",
+    files: null,
     redirect: false
   }
 
@@ -23,16 +24,18 @@ class GalleryForm extends Component {
 
   handleClick = (e) => {
 
-    if (this.state.file === null){
+    if (this.state.files === null){
       alert("Please add some images!")
     }
 
-    if (this.state.file !== null && this.state.username) {
+    if (this.state.files !== null && this.state.name && this.state.date) {
     let formData = new FormData()
-    formData.append('username', this.state.username)
-    formData.append('avatar', this.state.file)
+    formData.append('name', this.state.name)
+    formData.append('date', this.state.date)
+    formData.append('user_id', this.state.user_id)
+    formData.append('images', this.state.files)
 
-    fetch('http://localhost:3000/api/users', {
+    fetch('http://localhost:3000/api/albums', {
       method: 'POST',
       body: formData
       })
@@ -48,17 +51,8 @@ class GalleryForm extends Component {
     })
   }
 
-  componentDidMount () {
-    fetch('http://localhost:3000/api/users')
-    .then( res => res.json())
-    .then( users => {
-      this.setState({
-        users: users
-      })
-    })
-  }
-
   render () {
+    console.log(this.state.files)
 
     if (this.state.redirect) {
      return <Redirect to='/profile'/>;
@@ -76,8 +70,8 @@ class GalleryForm extends Component {
                   id="inputField"
                   placeholder='Album Name'
                   onChange={this.handleChange}
-                  value={this.state.albumName}
-                  name="albumName"
+                  value={this.state.name}
+                  name="name"
                 />
                 <input
                   id="inputField"
@@ -85,6 +79,13 @@ class GalleryForm extends Component {
                   onChange={this.handleChange}
                   value={this.state.date}
                   name="date"
+                />
+                <input
+                  id="user_id"
+                  placeholder='user_id'
+                  onChange={this.handleChange}
+                  value={this.state.user_id}
+                  name="user_id"
                 />
               </Form.Field>
 
