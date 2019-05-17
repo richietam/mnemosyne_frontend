@@ -29,11 +29,16 @@ class GalleryForm extends Component {
     }
 
     if (this.state.files !== null && this.state.name && this.state.date) {
+
     let formData = new FormData()
+
     formData.append('name', this.state.name)
     formData.append('date', this.state.date)
     formData.append('user_id', this.state.user_id)
-    formData.append('images', this.state.files)
+
+    for (const file of this.state.files) {
+      formData.append('images[]', file, file.name)
+    }
 
     fetch('http://localhost:3000/api/albums', {
       method: 'POST',
