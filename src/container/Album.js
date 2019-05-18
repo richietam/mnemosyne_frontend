@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
 import PreviewGalleryCards from '../component/PreviewGalleryCards'
 import AlbumProfileCard from '../component/AlbumProfileCard'
+import AlbumGallery from './AlbumGallery'
 
 class AlbumForm extends Component {
 
@@ -47,6 +48,13 @@ class AlbumForm extends Component {
           </Header>
           </Grid.Column>
         </Grid>
+
+        <Grid id="AlbumTop">
+          <Grid.Column id="Gallery" width={16}>
+            <AlbumGallery/>
+          </Grid.Column>
+        </Grid>
+
       </div>
     )
   }
