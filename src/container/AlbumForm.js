@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
 import PreviewGalleryCards from '../component/PreviewGalleryCards'
 
-class GalleryForm extends Component {
+class AlbumForm extends Component {
 
   state = {
     name: "",
@@ -136,4 +136,4 @@ function mapStateToProps (state) {
   }
 }
 
-export default connect(mapStateToProps) (GalleryForm)
+export default connect(mapStateToProps) (AlbumForm)
