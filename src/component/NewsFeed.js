@@ -1,5 +1,5 @@
 import React from 'react'
-import { Header, Image, Table, Card, Feed } from 'semantic-ui-react'
+import { Card, Feed } from 'semantic-ui-react'
 
 const NewsFeed = () => (
     <Card id="NewsFeedTable">
@@ -13,7 +13,7 @@ const NewsFeed = () => (
             <Feed.Content>
               <Feed.Date content='1 day ago' />
               <Feed.Summary>
-                You added <a>Jenny Hess</a> to your <a>coworker</a> group.
+                You added <a href="google.com">Jenny Hess</a> to your <a href="google.com">coworker</a> group.
               </Feed.Summary>
             </Feed.Content>
           </Feed.Event>
@@ -23,7 +23,7 @@ const NewsFeed = () => (
             <Feed.Content>
               <Feed.Date content='3 days ago' />
               <Feed.Summary>
-                You added <a>Molly Malone</a> as a friend.
+                You added <a href="google.com">Molly Malone</a> as a friend.
               </Feed.Summary>
             </Feed.Content>
           </Feed.Event>
@@ -33,7 +33,7 @@ const NewsFeed = () => (
             <Feed.Content>
               <Feed.Date content='4 days ago' />
               <Feed.Summary>
-                You added <a>Elliot Baker</a> to your <a>musicians</a> group.
+                You added <a href="google.com">Elliot Baker</a> to your <a href="google.com">musicians</a> group.
               </Feed.Summary>
             </Feed.Content>
           </Feed.Event>
@@ -43,7 +43,7 @@ const NewsFeed = () => (
             <Feed.Content>
               <Feed.Date content='4 days ago' />
               <Feed.Summary>
-                You added <a>Elliot Baker</a> to your <a>musicians</a> group.
+                You added <a href="google.com">Elliot Baker</a> to your <a href="google.com">musicians</a> group.
               </Feed.Summary>
             </Feed.Content>
           </Feed.Event>
@@ -53,7 +53,7 @@ const NewsFeed = () => (
             <Feed.Content>
               <Feed.Date content='4 days ago' />
               <Feed.Summary>
-                You added <a>Elliot Baker</a> to your <a>musicians</a> group.
+                You added <a href="google.com">Elliot Baker</a> to your <a href="google.com">musicians</a> group.
               </Feed.Summary>
             </Feed.Content>
           </Feed.Event>
@@ -63,7 +63,7 @@ const NewsFeed = () => (
             <Feed.Content>
               <Feed.Date content='4 days ago' />
               <Feed.Summary>
-                You added <a>Elliot Baker</a> to your <a>musicians</a> group.
+                You added <a href="google.com">Elliot Baker</a> to your <a href="google.com">musicians</a> group.
               </Feed.Summary>
             </Feed.Content>
           </Feed.Event>

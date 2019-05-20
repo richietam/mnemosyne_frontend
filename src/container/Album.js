@@ -1,12 +1,10 @@
-import React, { Component, Fragment } from 'react'
-import { Button, Header, Grid, Card } from 'semantic-ui-react'
-import Dropzone from 'react-dropzone'
-import UserCard from '../component/UserCard'
+import React, { Component } from 'react'
+import { Header, Grid, Card } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router'
-import PreviewGalleryCards from '../component/PreviewGalleryCards'
+// import { Redirect } from 'react-router'
 import AlbumProfileCard from '../component/AlbumProfileCard'
 import AlbumGallery from './AlbumGallery'
+
 
 class AlbumForm extends Component {
 
@@ -54,6 +52,7 @@ class AlbumForm extends Component {
             <AlbumGallery/>
           </Grid.Column>
         </Grid>
+
 
       </div>
     )

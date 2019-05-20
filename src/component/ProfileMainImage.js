@@ -1,9 +1,12 @@
 import React from 'react'
-import { Image, Header, Container } from 'semantic-ui-react'
+import { Header } from 'semantic-ui-react'
 
 const ProfileMainImage = (props) => (
   <div className="ProfileMainImage">
-    <img src = "" />
+    <img
+      src= ""
+      alt=""
+    />
 
     <Header
       as='h1'

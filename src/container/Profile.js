@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Grid, Image, Header, Button } from 'semantic-ui-react'
+import { Grid, Header, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import ProfileMainImage from '../component/ProfileMainImage'
 import NewsFeed from '../component/NewsFeed'
@@ -9,6 +9,7 @@ import GalleryCards from '../component/GalleryCards'
 
 class Profile extends Component {
   render () {
+    console.log('in profile, currnet props are:', this.props)
     return (
       <div id="profile">
       <Grid>
@@ -58,7 +59,8 @@ class Profile extends Component {
 
 function mapStateToProps (state) {
   return {
-    users: state.users
+    users: state.users,
+    current_user: state.current_user
   }
 }
 

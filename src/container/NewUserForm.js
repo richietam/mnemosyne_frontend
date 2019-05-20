@@ -1,10 +1,9 @@
 import React, { Component, Fragment } from 'react'
 import { Button, Checkbox, Form, Icon, Header } from 'semantic-ui-react'
 import Dropzone from 'react-dropzone'
-import UserCard from '../component/UserCard'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
-import SubmitButton from '../component/SubmitButton'
+// import SubmitButton from '../component/SubmitButton'
 
 class NewUserForm extends Component {
 
@@ -114,11 +113,9 @@ class NewUserForm extends Component {
           >
             Submit
           </Button>
-          
+
       </Form>
-      < UserCard
-      users={this.props.users.users[2]}
-      />
+
       </Fragment>
     )
   }

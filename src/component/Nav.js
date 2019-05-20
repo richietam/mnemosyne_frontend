@@ -28,6 +28,10 @@ class Nav extends Component {
          Album
        </Link>
 
+       <Link to='/login'>
+         Login
+       </Link>
+
       </div>
     </div>
      )

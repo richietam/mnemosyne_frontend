@@ -13,19 +13,19 @@ const AlbumProfileCard = () => (
       <Card.Header id="AlbumCard" >Matthew</Card.Header>
     </Card.Content>
     <Card.Content extra>
-      <a id="AlbumCard">
+      <a href="google.com" id="AlbumCard">
         <Icon name='user'  />
         24,225 Followers
       </a>
     </Card.Content>
     <Card.Content extra>
-      <a id="AlbumCard">
+      <a href="google.com" id="AlbumCard">
         <Icon name='hand lizard' />
         2,312 Following
       </a>
     </Card.Content>
     <Card.Content extra>
-      <a id="AlbumCard">
+      <a href="google.com" id="AlbumCard">
         <Icon name='camera retro' />
         22,222 Photos Uploaded
       </a>
