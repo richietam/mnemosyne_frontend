@@ -10,7 +10,6 @@ class AlbumForm extends Component {
   state = {
     name: "",
     date: "",
-    user_id: "",
     files: null,
     redirect: false
   }
@@ -33,7 +32,7 @@ class AlbumForm extends Component {
 
     formData.append('name', this.state.name)
     formData.append('date', this.state.date)
-    formData.append('user_id', this.state.user_id)
+    formData.append('user_id', this.props.current_user.id)
 
     for (const file of this.state.files) {
       formData.append('images[]', file, file.name)
@@ -56,7 +55,9 @@ class AlbumForm extends Component {
   }
 
   render () {
-    console.log(this.state.files)
+
+    if (!this.props.current_user) return null
+    console.log('AlbumForm redux state', this.state.files)
 
     if (this.state.redirect) {
      return <Redirect to='/profile'/>;
@@ -83,13 +84,6 @@ class AlbumForm extends Component {
                   onChange={this.handleChange}
                   value={this.state.date}
                   name="date"
-                />
-                <input
-                  id="user_id"
-                  placeholder='user_id'
-                  onChange={this.handleChange}
-                  value={this.state.user_id}
-                  name="user_id"
                 />
               </Form.Field>
 
@@ -129,10 +123,12 @@ class AlbumForm extends Component {
   }
 }
 
-function mapStateToProps (state) {
-  return {
-    users: state.users
-  }
-}
+const mapStateToProps = ({ users: {current_user} } ) => ({ current_user })
+
+// function mapStateToProps (state) {
+//   return {
+//     users: state.users
+//   }
+// }
 
 export default connect(mapStateToProps) (AlbumForm)

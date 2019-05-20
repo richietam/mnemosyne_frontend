@@ -12,7 +12,7 @@ class Profile extends Component {
   render () {
     console.log('in profile', this.props)
     if (!this.props.current_user) return null
-    const { image, username, bio, first_name, last_name } = this.props.current_user
+    const { avatar, username, bio, first_name, last_name } = this.props.current_user
 
     return (
 
@@ -30,7 +30,7 @@ class Profile extends Component {
       <Grid>
         <Grid.Column width={5}>
           <ProfileCard
-            avatar={image}
+            avatar={avatar}
             username={username.charAt(0).toUpperCase() + username.slice(1)}
           />
         </Grid.Column>
