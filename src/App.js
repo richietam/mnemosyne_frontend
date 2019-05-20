@@ -4,11 +4,13 @@ import './App.css';
 import { connect } from 'react-redux'
 import { Route, Switch } from 'react-router-dom'
 import NewUserForm from './container/NewUserForm'
+import LoginForm from './container/LoginForm'
 import Nav from './component/Nav'
 import Welcome from './container/Welcome'
 import Profile from './container/Profile'
 import AlbumForm from './container/AlbumForm'
 import Album from './container/Album'
+import { SET_USERS } from './constants/ActionTypes'
 
 class App extends Component {
 
@@ -16,7 +18,6 @@ class App extends Component {
     fetch('http://localhost:3000/api/users')
       .then(res => res.json())
         .then( users => {
-          console.log('app response users are ', users)
           this.props.setUsers(users)
         })
   }
@@ -28,7 +29,7 @@ class App extends Component {
 
         <Switch>
           <Route path='/newuser' render={() => <NewUserForm/>} />
-          <Route path='/login' render={() => <NewUserForm/>} />
+          <Route path='/login' render={() => <LoginForm/>} />
           <Route path='/profile' render={() => <Profile/>} />
           <Route path='/newalbum' render={() => <AlbumForm/>} />
           <Route path='/album' render={() => <Album/>} />
@@ -45,7 +46,7 @@ function mapDispatchToprops (dispatch) {
   return {
     setUsers: (users) => {
       dispatch({
-        type: "SET_USERS",
+        type: SET_USERS,
         payload: users
       })
     }

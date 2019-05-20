@@ -19,19 +19,19 @@ const ProfileCard = () => (
       </Card.Description>
     </Card.Content>
     <Card.Content extra>
-      <a>
+      <a href="google.com">
         <Icon name='user' />
         24,225 Followers
       </a>
     </Card.Content>
     <Card.Content extra>
-      <a>
+      <a href="google.com">
         <Icon name='hand lizard' />
         2,312 Following
       </a>
     </Card.Content>
     <Card.Content extra>
-      <a>
+      <a href="google.com">
         <Icon name='camera retro' />
         22,222 Photos Uploaded
       </a>

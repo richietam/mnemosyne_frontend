@@ -1,11 +1,15 @@
 import React from 'react'
-import { Card, Icon, Image} from 'semantic-ui-react'
+import { Card } from 'semantic-ui-react'
 
 const src = 'https://react.semantic-ui.com/images/wireframe/white-image.png'
 
 const extra = (
-  <a>
-    <img id="GalleryCardAvatar" src="https://react.semantic-ui.com/images/avatar/small/molly.png" />
+  <a href="google.com">
+    <img
+      alt= ""
+      id="GalleryCardAvatar"
+      src="https://react.semantic-ui.com/images/avatar/small/molly.png"
+    />
     M + 2 Friends
   </a>
 )
@@ -13,7 +17,7 @@ const extra = (
 const GalleryCards = () => (
 
   <Card.Group itemsPerRow={4}>
-    <Card color='red' onClick={true} image={src} extra={extra} />
+    <Card color='red' onClick={null} image={src} extra={extra} />
     <Card color='orange' image={src} extra={extra} />
     <Card color='yellow' image={src} extra={extra} />
     <Card color='olive' image={src} extra={extra} />
