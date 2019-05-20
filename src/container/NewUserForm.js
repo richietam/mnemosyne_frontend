@@ -9,8 +9,8 @@ class NewUserForm extends Component {
 
   state = {
     username: "",
-    firstName: "",
-    lastName: "",
+    first_name: "",
+    last_name: "",
     file: null,
     redirect: false
   }
@@ -22,7 +22,7 @@ class NewUserForm extends Component {
   }
 
   handleClick = (e) => {
-
+    e.preventDefault()
     if (this.state.file === null){
       alert("Please add an avatar")
     }
@@ -30,6 +30,8 @@ class NewUserForm extends Component {
     if (this.state.file !== null && this.state.username) {
     let formData = new FormData()
     formData.append('username', this.state.username)
+    formData.append('first_name', this.state.first_name)
+    formData.append('last_name', this.state.last_name)
     formData.append('avatar', this.state.file)
 
     fetch('http://localhost:3000/api/users', {
@@ -79,15 +81,15 @@ class NewUserForm extends Component {
               id="inputField"
               placeholder='First Name'
               onChange={this.handleChange}
-              value={this.state.firstName}
-              name="firstName"
+              value={this.state.first_name}
+              name="first_name"
             />
             <input
               id="inputField"
               placeholder='Last Name'
               onChange={this.handleChange}
-              value={this.state.lastName}
-              name="lastName"
+              value={this.state.last_name}
+              name="last_name"
             />
           </Form.Field>
 
