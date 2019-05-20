@@ -20,16 +20,21 @@ class LoginForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    this.props.setCurrentUser(this.state.username)
+    const current_user = this.findCurrentUser(this.state.username)
+    this.props.setCurrentUser(current_user)
     this.setState({
       redirect: true
     })
   }
 
-
+  findCurrentUser = (name) => {
+    return this.props.users.all_users.find( user => {
+      return user.username.toLowerCase() === name.toLowerCase()
+    })
+  }
 
   render () {
-    console.log(this.props)
+    console.log(' in login form', this.props)
     if (this.state.redirect) {
      return <Redirect to='/profile'/>;
    }
@@ -61,7 +66,6 @@ class LoginForm extends Component {
           >
             Submit
           </Button>
-
       </Form>
 
       </Fragment>

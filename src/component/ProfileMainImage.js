@@ -5,14 +5,14 @@ const ProfileMainImage = (props) => (
   <div className="ProfileMainImage">
     <img
       src= ""
-      alt=""
+      alt= ""
     />
 
     <Header
       as='h1'
       id="ProfileMainImageH1"
     >
-      LOREM IPSUM DIMSUM
+      {props.first_name + " " + props.last_name}
     </Header>
 
     <Header

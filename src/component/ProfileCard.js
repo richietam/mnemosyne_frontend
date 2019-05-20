@@ -1,16 +1,16 @@
 import React from 'react'
 import { Card, Icon, Image, Button } from 'semantic-ui-react'
 
-const ProfileCard = () => (
+const ProfileCard = (props) => (
   <Card id="ProfileCard">
-    <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} />
+    <Image src={props.avatar} wrapped ui={false} />
     <Card.Content>
       <Button
         id="ProfileCardButton"
       >
-        Follow Matthew
+        {`Follow ${props.username}`}
       </Button>
-      <Card.Header>Matthew</Card.Header>
+      <Card.Header>{props.username}</Card.Header>
       <Card.Meta>
         <span className='date'>Joined in 2015</span>
       </Card.Meta>
