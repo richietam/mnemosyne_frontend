@@ -11,6 +11,8 @@ function usersReducer(state = defaultState, action){
       return {...state, all_users: action.payload}
     case "SET_CURRENT_USER":
       return {...state, current_user: action.payload}
+    case "SET_CURRENT_ALBUM":
+      return {...state, current_album: action.payload}
     default:
       return state
   }

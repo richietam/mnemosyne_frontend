@@ -34,7 +34,7 @@ class LoginForm extends Component {
   }
 
   render () {
-    console.log(' in login form', this.props)
+    // console.log(' in login form', this.props)
     if (this.state.redirect) {
      return <Redirect to='/profile'/>;
    }
