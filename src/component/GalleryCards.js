@@ -28,7 +28,7 @@ class GalleryCards extends Component {
         key={album.id}
         id={album.id}
         extra={extra}
-        image={album.images[0]}
+        image={album.images[0].image_url}
         onClick={ () => this.handleAlbumClick(album) }
         fluid
       />

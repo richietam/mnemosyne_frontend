@@ -11,9 +11,9 @@ class AlbumForm extends Component {
   renderGalleryImages = () => {
     return this.props.current_album.images.map( (img) => {
       return <Image
-        src={img}
+        src={img.image_url}
         fluid
-        key={img}
+        key={img.id}
       />
     })
   }
