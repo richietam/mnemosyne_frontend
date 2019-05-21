@@ -1,52 +1,75 @@
 import React, { Component } from 'react'
 import { Card } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-
-const src = 'https://react.semantic-ui.com/images/wireframe/white-image.png'
+import { Redirect } from 'react-router'
+import { SET_CURRENT_ALBUM } from '../constants/ActionTypes'
 
 const extra = (
-  <a href="google.com">
+  <div>
     <img
       alt= ""
       id="GalleryCardAvatar"
       src="https://react.semantic-ui.com/images/avatar/small/molly.png"
     />
-    M + 2 Friends
-  </a>
+    M + 2 Friends created Album Name
+  </div>
 )
 
 class GalleryCards extends Component {
 
+  state = {
+    redirect: false
+  }
+
   renderAlbumCard = () => {
     return this.props.current_user.albums.map( (album) => {
-      return <Card color='orange' key={album.id} image={album.images[0]} extra={extra} fluid />
+      return <Card
+        color='orange'
+        key={album.id}
+        id={album.id}
+        extra={extra}
+        image={album.images[0]}
+        onClick={ () => this.handleAlbumClick(album) }
+        fluid
+      />
     }
   )
   }
 
+  handleAlbumClick = (album) => {
+    this.props.setCurrentAlbum(album)
+    this.setState({
+      redirect: true
+    })
+    console.log("i am being clicked!", album)
+  }
+
+
   render() {
-    console.log('inGalleryCards', this.props.current_user)
+    if (this.state.redirect) {
+     return <Redirect to='/album'/>;
+   }
     return(
       <Card.Group itemsPerRow={4}>
         {this.renderAlbumCard()}
-        <Card color='red' onClick={null} image={src} extra={extra} />
-        <Card color='orange' image={"https://react.semantic-ui.com/images/avatar/small/molly.png"} extra={extra} />
-        <Card color='yellow' image={src} extra={extra} />
-        <Card color='olive' image={src} extra={extra} />
-        <Card color='green' image={src} extra={extra} />
-        <Card color='teal' image={src} extra={extra} />
-        <Card color='blue' image={src} extra={extra} />
-        <Card color='violet' image={src} extra={extra} />
-        <Card color='purple' image={src} extra={extra} />
-        <Card color='pink' image={src} extra={extra} />
-        <Card color='brown' image={src} extra={extra} />
-        <Card color='grey' image={src} extra={extra} />
       </Card.Group>
     )
   }
 }
 
 const mapStateToProps = ({ users: {current_user} } ) => ({ current_user })
+
+function mapDispatchToProps (dispatch) {
+  return {
+    setCurrentAlbum: (album_id) => {
+      dispatch({
+        type: SET_CURRENT_ALBUM,
+        payload: album_id
+      })
+    }
+  }
+}
+
 
 // function mapStateToProps (state) {
 //   return {
@@ -55,4 +78,4 @@ const mapStateToProps = ({ users: {current_user} } ) => ({ current_user })
 // }
 
 
-export default connect(mapStateToProps) (GalleryCards)
+export default connect(mapStateToProps, mapDispatchToProps) (GalleryCards)

@@ -12,7 +12,7 @@ class Profile extends Component {
   render () {
     console.log('in profile', this.props)
     if (!this.props.current_user) return null
-    const { avatar, username, bio, first_name, last_name } = this.props.current_user
+    const { avatar, username, first_name, last_name } = this.props.current_user
 
     return (
 
@@ -57,7 +57,9 @@ class Profile extends Component {
           </Button>
           </Link>
           </div>
-          <GalleryCards/>
+          <GalleryCards
+            handleAlbumClick={this.handleAlbumClick}
+          />
         </Grid.Column>
 
       </Grid>
@@ -65,6 +67,7 @@ class Profile extends Component {
     )
   }
 }
+
 
 
 const mapStateToProps = ({ users: {current_user} } ) => ({ current_user })

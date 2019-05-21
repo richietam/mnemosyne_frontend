@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Header, Grid, Card } from 'semantic-ui-react'
+import { Header, Grid, Card, Image } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 // import { Redirect } from 'react-router'
 import AlbumProfileCard from '../component/AlbumProfileCard'
@@ -8,7 +8,19 @@ import AlbumGallery from './AlbumGallery'
 
 class AlbumForm extends Component {
 
+  renderGalleryImages = () => {
+    return this.props.current_album.images.map( (img) => {
+      return <Image
+        src={img}
+        fluid
+        key={img}
+      />
+    })
+  }
+
   render () {
+    console.log(this.props)
+    if (!this.props.current_album) return null
     return (
       <div>
         <Grid id="AlbumTop">
@@ -49,6 +61,12 @@ class AlbumForm extends Component {
 
         <Grid id="AlbumTop">
           <Grid.Column id="Gallery" width={16}>
+            {this.renderGalleryImages()}
+          </Grid.Column>
+        </Grid>
+
+        <Grid id="AlbumTop">
+          <Grid.Column id="Gallery" width={16}>
             <AlbumGallery/>
           </Grid.Column>
         </Grid>
@@ -61,7 +79,8 @@ class AlbumForm extends Component {
 
 function mapStateToProps (state) {
   return {
-    users: state.users
+    users: state.users,
+    current_album: state.users.current_album
   }
 }
 
