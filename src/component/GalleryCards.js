@@ -46,6 +46,7 @@ class GalleryCards extends Component {
 
 
   render() {
+    console.log('in gallerycard, current state is', this.props)
     if (this.state.redirect) {
      return <Redirect to='/album'/>;
    }

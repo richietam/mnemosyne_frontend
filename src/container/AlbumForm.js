@@ -100,6 +100,9 @@ class AlbumForm extends Component {
               </Dropzone>
 
             </Form>
+
+            {/*this.state.files.length > 0 ? <div><img src={file.preview}/></div> : null*/}
+
           </Grid.Column>
         </Grid>
 
@@ -107,7 +110,9 @@ class AlbumForm extends Component {
           <Grid.Column
             width={16}
           >
-            <PreviewGalleryCards />
+            <PreviewGalleryCards
+              files={this.state.files}
+            />
           </Grid.Column>
         </Grid>
 

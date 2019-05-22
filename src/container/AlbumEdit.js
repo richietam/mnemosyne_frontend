@@ -1,41 +1,52 @@
 import React, { Component } from 'react'
-import { Header, Grid, Card, Image, Button } from 'semantic-ui-react'
+import { Header, Grid, Card, Image, Button, Divider } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 // import { Redirect } from 'react-router'
 import AlbumProfileCard from '../component/AlbumProfileCard'
 import AlbumGallery from './AlbumGallery'
 import { Link } from 'react-router-dom'
 
-class Album extends Component {
+class AlbumEdit extends Component {
 
   renderGalleryImages = () => {
-    return this.props.current_album.images.map( (img) => {
-      return <Image
+    return this.props.current_album.images.map ( (img) => {
+      return <div key={img.id}>
+      <Image
         src={img.image_url}
-        fluid
-        key={img.id}
+        size='tiny'
+        verticalAlign='top'
       />
+      <span>
+        {img.id}
+      </span>
+      <Button
+        id="editbutton"
+        onClick={ () => this.handleDeleteButton(img)}
+      >
+        <Button.Content visible>Delete Image</Button.Content>
+      </Button>
+      <Divider />
+      </div>
     })
   }
+
+  handleDeleteButton = (img) => {
+    console.log("delete button is being clicked!", img.id )
+    fetch(`http://localhost:3000/api/users`, {
+      method: 'DELETE',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({image_id: img.id})
+    })
+    .then(res => console.log(img.id))
+
+  }
+
 
   render () {
     console.log(this.props)
     if (!this.props.current_album) return null
     return (
       <div>
-        <Grid id="AlbumTop">
-          <Grid.Column width={16}>
-            <div id="MainAlbumImage">
-            </div>
-            <div id="MainAlbumH1">
-            <Header size='huge'>LOREM IPSUM DIMSUM</Header>
-            </div>
-            <div id="MainAlbumH2">
-            <Header size='huge'>LOREM IPSUM DIMSUM</Header>
-            </div>
-          </Grid.Column>
-        </Grid>
-
         <Grid id="Album2ndModule">
           <Grid.Column
             width={8}
@@ -61,9 +72,9 @@ class Album extends Component {
 
         <Grid id="AlbumTop">
           <Grid.Column id="Gallery" width={16}>
-            <Link to ='/albumedit'>
-              <Button id="editbutton" >
-                <Button.Content visible>Edit Album</Button.Content>
+            <Link to ='/album'>
+              <Button id="GalleryButton" >
+                <Button.Content visible>Save Edits</Button.Content>
               </Button>
             </Link>
             {this.renderGalleryImages()}
@@ -72,7 +83,7 @@ class Album extends Component {
 
         <Grid id="AlbumTop">
           <Grid.Column id="Gallery" width={16}>
-          
+            <AlbumGallery/>
           </Grid.Column>
         </Grid>
 
@@ -89,4 +100,4 @@ function mapStateToProps (state) {
   }
 }
 
-export default connect(mapStateToProps) (Album)
+export default connect(mapStateToProps) (AlbumEdit)

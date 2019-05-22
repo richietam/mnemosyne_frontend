@@ -49,9 +49,9 @@ class Profile extends Component {
           width={16}
           id="GalleryCardsGrid"
         >
-          <Header as='h2'>Matthew's Galleries:</Header>
+          <Header as='h2'>{first_name.charAt(0).toUpperCase() + first_name.slice(1) + "'s Albums:"}</Header>
           <div id="NewGalleryButton">
-          <Link to ='/newgallery'>
+          <Link to ='/newalbum'>
           <Button id="HomeButton" >
             <Button.Content visible>+ New Gallery</Button.Content>
           </Button>
