@@ -10,7 +10,6 @@ import GalleryCards from '../component/GalleryCards'
 class Profile extends Component {
 
   render () {
-    console.log('in profile', this.props)
     if (!this.props.current_user) return null
     const { avatar, username, first_name, last_name } = this.props.current_user
 
@@ -49,9 +48,9 @@ class Profile extends Component {
           width={16}
           id="GalleryCardsGrid"
         >
-          <Header as='h2'>Matthew's Galleries:</Header>
+          <Header as='h2'>{first_name.charAt(0).toUpperCase() + first_name.slice(1) + "'s Albums:"}</Header>
           <div id="NewGalleryButton">
-          <Link to ='/newgallery'>
+          <Link to ='/newalbum'>
           <Button id="HomeButton" >
             <Button.Content visible>+ New Gallery</Button.Content>
           </Button>

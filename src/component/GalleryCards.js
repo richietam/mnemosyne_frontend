@@ -21,6 +21,21 @@ class GalleryCards extends Component {
     redirect: false
   }
 
+  componentDidMount () {
+    const album_id = localStorage.getItem("album_id")
+
+    if (album_id) {
+      fetch('http://localhost:3000/api/current_album', {
+        headers: {
+          "Authorization": album_id
+        }
+      })
+      .then(res => res.json() )
+      .then( album => this.props.setCurrentAlbum(album) )
+    }
+
+  }
+
   renderAlbumCard = () => {
     return this.props.current_user.albums.map( (album) => {
       return <Card
@@ -38,6 +53,7 @@ class GalleryCards extends Component {
 
   handleAlbumClick = (album) => {
     this.props.setCurrentAlbum(album)
+    localStorage.setItem("album_id", album.id)
     this.setState({
       redirect: true
     })
@@ -46,6 +62,7 @@ class GalleryCards extends Component {
 
 
   render() {
+    console.log('in gallerycard, current state is', this.props)
     if (this.state.redirect) {
      return <Redirect to='/album'/>;
    }

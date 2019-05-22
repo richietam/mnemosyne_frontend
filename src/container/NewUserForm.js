@@ -2,7 +2,9 @@ import React, { Component, Fragment } from 'react'
 import { Button, Checkbox, Form, Icon, Header } from 'semantic-ui-react'
 import Dropzone from 'react-dropzone'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router'
+// import { Redirect } from 'react-router'
+import { SET_CURRENT_USER } from '../constants/ActionTypes'
+
 // import SubmitButton from '../component/SubmitButton'
 
 class NewUserForm extends Component {
@@ -11,6 +13,7 @@ class NewUserForm extends Component {
     username: "",
     first_name: "",
     last_name: "",
+    password:"",
     file: null,
     redirect: false
   }
@@ -33,14 +36,21 @@ class NewUserForm extends Component {
     formData.append('first_name', this.state.first_name)
     formData.append('last_name', this.state.last_name)
     formData.append('avatar', this.state.file)
+    formData.append('password', this.state.password)
 
     fetch('http://localhost:3000/api/users', {
       method: 'POST',
       body: formData
       })
-    .then(this.setState({
-      redirect: true
-    }))
+    .then( res => res.json())
+    .then( response => {
+      if (response.errors) {
+        alert(response.errors)
+      } else {
+          this.props.setCurrentUser(response)
+          localStorage.setItem("user_id", response.id)
+          this.props.history.push('/profile')
+    }})
     }
   }
 
@@ -61,10 +71,7 @@ class NewUserForm extends Component {
   }
 
   render () {
-    if (this.state.redirect) {
-     return <Redirect to='/home'/>;
-   }
-   console.log(this.state)
+   console.log(this.props)
     return (
       <Fragment>
         <Form id="form">
@@ -91,8 +98,14 @@ class NewUserForm extends Component {
               value={this.state.last_name}
               name="last_name"
             />
+            <input
+              id="inputField"
+              placeholder='Password'
+              onChange={this.handleChange}
+              value={this.state.password}
+              name="password"
+            />
           </Form.Field>
-
           <Dropzone onDrop={this.handleDrop}>
           {({getRootProps, getInputProps}) => (
             <section>
@@ -104,7 +117,6 @@ class NewUserForm extends Component {
             </section>
           )}
           </Dropzone>
-
           <Form.Field>
             <Checkbox label='I agree to the Terms and Conditions' />
           </Form.Field>
@@ -115,11 +127,20 @@ class NewUserForm extends Component {
           >
             Submit
           </Button>
-
       </Form>
-
       </Fragment>
     )
+  }
+}
+
+function mapDispatchToprops (dispatch) {
+  return {
+    setCurrentUser: (user) => {
+      dispatch({
+        type: SET_CURRENT_USER,
+        payload: user
+      })
+    }
   }
 }
 
@@ -129,4 +150,4 @@ function mapStateToProps (state) {
   }
 }
 
-export default connect(mapStateToProps) (NewUserForm)
+export default connect(mapStateToProps, mapDispatchToprops) (NewUserForm)

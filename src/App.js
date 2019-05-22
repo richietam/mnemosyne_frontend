@@ -10,16 +10,25 @@ import Welcome from './container/Welcome'
 import Profile from './container/Profile'
 import AlbumForm from './container/AlbumForm'
 import Album from './container/Album'
+import AlbumEdit from './container/AlbumEdit'
 import { SET_USERS } from './constants/ActionTypes'
+import { SET_CURRENT_USER } from './constants/ActionTypes'
 
 class App extends Component {
 
   componentDidMount () {
-    fetch('http://localhost:3000/api/users')
+
+    const userID = localStorage.getItem("user_id")
+
+    if(userID){
+      fetch('http://localhost:3000/api/auto_login', {
+        headers: {
+          "Authorization": userID
+        }
+      })
       .then(res => res.json())
-        .then( users => {
-          this.props.setUsers(users)
-        })
+      .then(response=> this.props.setCurrentUser(response))
+    }
   }
 
   render () {
@@ -28,11 +37,12 @@ class App extends Component {
         < Nav changePage={this.changPage} />
 
         <Switch>
-          <Route path='/newuser' render={() => <NewUserForm/>} />
-          <Route path='/login' render={() => <LoginForm/>} />
-          <Route path='/profile' render={() => <Profile/>} />
-          <Route path='/newalbum' render={() => <AlbumForm/>} />
-          <Route path='/album' render={() => <Album/>} />
+          <Route path='/newuser' render={(routeProps) => <NewUserForm {...routeProps}/>} />
+          <Route path='/login' render={(routeProps) => <LoginForm {...routeProps}/>} />
+          <Route path='/profile' render={(routeProps) => <Profile {...routeProps}/>} />
+          <Route path='/newalbum' render={(routeProps) => <AlbumForm {...routeProps}/>} />
+          <Route path='/album' render={routeProps => <Album {...routeProps} {...routeProps}/>} />
+          <Route path='/albumedit' render={(routeProps) => <AlbumEdit {...routeProps}/>} />
           <Route exact path='/' component={ Welcome } />
           <Route component={ Welcome } />
         </Switch>
@@ -48,6 +58,12 @@ function mapDispatchToprops (dispatch) {
       dispatch({
         type: SET_USERS,
         payload: users
+      })
+    },
+    setCurrentUser: (user) => {
+      dispatch({
+        type: SET_CURRENT_USER,
+        payload: user
       })
     }
   }

@@ -42,9 +42,11 @@ class AlbumForm extends Component {
       method: 'POST',
       body: formData
       })
-    .then(this.setState({
-      redirect: true
-    }))
+    .then( res => res.json() )
+    .then( response => {
+      console.log(response)
+      this.props.history.push('/profile')
+    })
     }
   }
 
@@ -100,6 +102,9 @@ class AlbumForm extends Component {
               </Dropzone>
 
             </Form>
+
+            {/*this.state.files.length > 0 ? <div><img src={file.preview}/></div> : null*/}
+
           </Grid.Column>
         </Grid>
 
@@ -107,7 +112,9 @@ class AlbumForm extends Component {
           <Grid.Column
             width={16}
           >
-            <PreviewGalleryCards />
+            <PreviewGalleryCards
+              files={this.state.files}
+            />
           </Grid.Column>
         </Grid>
 

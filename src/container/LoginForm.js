@@ -9,7 +9,6 @@ class LoginForm extends Component {
   state = {
     username: "",
     password: "",
-    redirect: false
   }
 
   handleChange = (e) => {
@@ -20,11 +19,29 @@ class LoginForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    const current_user = this.findCurrentUser(this.state.username)
-    this.props.setCurrentUser(current_user)
-    this.setState({
-      redirect: true
+
+    fetch("http://localhost:3000/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accepts": "application/json",
+      },
+      body: JSON.stringify(this.state)
     })
+    .then(res => res.json())
+    .then( response => {
+        if (response.errors) {
+          alert(response.errors)
+        } else {
+          this.props.setCurrentUser(response)
+          localStorage.setItem("user_id", response.id)
+          this.props.history.push('/profile')
+        }
+    })
+
+
+    // const current_user = this.findCurrentUser(this.state.username)
+
   }
 
   findCurrentUser = (name) => {
@@ -34,7 +51,7 @@ class LoginForm extends Component {
   }
 
   render () {
-    // console.log(' in login form', this.props)
+    console.log(' in login form', this.props)
     if (this.state.redirect) {
      return <Redirect to='/profile'/>;
    }
