@@ -42,9 +42,11 @@ class AlbumForm extends Component {
       method: 'POST',
       body: formData
       })
-    .then(this.setState({
-      redirect: true
-    }))
+    .then( res => res.json() )
+    .then( response => {
+      console.log(response)
+      this.props.history.push('/profile')
+    })
     }
   }
 

@@ -17,11 +17,18 @@ import { SET_CURRENT_USER } from './constants/ActionTypes'
 class App extends Component {
 
   componentDidMount () {
-    fetch('http://localhost:3000/api/users/3')
+
+    const userID = localStorage.getItem("user_id")
+
+    if(userID){
+      fetch('http://localhost:3000/api/auto_login', {
+        headers: {
+          "Authorization": userID
+        }
+      })
       .then(res => res.json())
-        .then( user => {
-          this.props.setCurrentUser(user)
-        })
+      .then(response=> this.props.setCurrentUser(response))
+    }
   }
 
   render () {
@@ -30,12 +37,12 @@ class App extends Component {
         < Nav changePage={this.changPage} />
 
         <Switch>
-          <Route path='/newuser' render={() => <NewUserForm/>} />
-          <Route path='/login' render={() => <LoginForm/>} />
-          <Route path='/profile' render={() => <Profile/>} />
-          <Route path='/newalbum' render={() => <AlbumForm/>} />
-          <Route path='/album' render={routeProps => <Album {...routeProps}/>} />
-          <Route path='/albumedit' render={() => <AlbumEdit/>} />
+          <Route path='/newuser' render={(routeProps) => <NewUserForm {...routeProps}/>} />
+          <Route path='/login' render={(routeProps) => <LoginForm {...routeProps}/>} />
+          <Route path='/profile' render={(routeProps) => <Profile {...routeProps}/>} />
+          <Route path='/newalbum' render={(routeProps) => <AlbumForm {...routeProps}/>} />
+          <Route path='/album' render={routeProps => <Album {...routeProps} {...routeProps}/>} />
+          <Route path='/albumedit' render={(routeProps) => <AlbumEdit {...routeProps}/>} />
           <Route exact path='/' component={ Welcome } />
           <Route component={ Welcome } />
         </Switch>

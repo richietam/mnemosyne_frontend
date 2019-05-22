@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { Header, Grid, Card, Image, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-// import { Redirect } from 'react-router'
 import AlbumProfileCard from '../component/AlbumProfileCard'
-import AlbumGallery from './AlbumGallery'
 import { Link } from 'react-router-dom'
+import { SET_CURRENT_ALBUM } from '../constants/ActionTypes'
 
 class Album extends Component {
 
@@ -16,6 +15,20 @@ class Album extends Component {
         key={img.id}
       />
     })
+  }
+
+  componentDidMount () {
+    const album_id = localStorage.getItem("album_id")
+
+    if (album_id) {
+      fetch('http://localhost:3000/api/current_album', {
+        headers: {
+          "Authorization": album_id
+        }
+      })
+      .then(res => res.json() )
+      .then( album => this.props.setCurrentAlbum(album) )
+    }
   }
 
   render () {
@@ -72,13 +85,24 @@ class Album extends Component {
 
         <Grid id="AlbumTop">
           <Grid.Column id="Gallery" width={16}>
-          
+
           </Grid.Column>
         </Grid>
 
 
       </div>
     )
+  }
+}
+
+function mapDispatchToProps (dispatch) {
+  return {
+    setCurrentAlbum: (album_id) => {
+      dispatch({
+        type: SET_CURRENT_ALBUM,
+        payload: album_id
+      })
+    }
   }
 }
 
@@ -89,4 +113,4 @@ function mapStateToProps (state) {
   }
 }
 
-export default connect(mapStateToProps) (Album)
+export default connect(mapStateToProps, mapDispatchToProps) (Album)

@@ -10,7 +10,6 @@ import GalleryCards from '../component/GalleryCards'
 class Profile extends Component {
 
   render () {
-    console.log('in profile', this.props)
     if (!this.props.current_user) return null
     const { avatar, username, first_name, last_name } = this.props.current_user
 
