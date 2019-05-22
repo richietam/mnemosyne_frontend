@@ -85,7 +85,7 @@ class AlbumEdit extends Component {
           </Grid.Column>
         </Grid>
 
-        <Grid id="AlbumTop">
+        <Grid>
           <Grid.Column id="Gallery" width={16}>
             <Link to ='/album'>
               <Button id="GalleryButton" >
@@ -96,7 +96,7 @@ class AlbumEdit extends Component {
           </Grid.Column>
         </Grid>
 
-        <Grid id="AlbumTop">
+        <Grid >
           <Grid.Column id="Gallery" width={16}>
             <AlbumGallery/>
           </Grid.Column>

@@ -12,6 +12,10 @@ class Nav extends Component {
          Home
        </Link>
 
+       <Link to='/profile'>
+       Profile
+       </Link>
+       
        <Link to='/newuser'>
          New User
        </Link>
@@ -20,9 +24,6 @@ class Nav extends Component {
          New Album
        </Link>
 
-       <Link to='/profile'>
-         Profile
-       </Link>
 
        <Link to='/album'>
          Album
