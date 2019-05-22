@@ -36,15 +36,16 @@ class Album extends Component {
     if (!this.props.current_album) return null
     return (
       <div>
-        <Grid id="AlbumTop">
-          <Grid.Column width={16}>
+        <Grid>
+          <Grid.Column width={16} id="AlbumTop">
             <div id="MainAlbumImage">
+              <img src={this.props.current_album.images[0].image_url} />
             </div>
             <div id="MainAlbumH1">
-            <Header size='huge'>LOREM IPSUM DIMSUM</Header>
+            <Header size='huge' id="AlbumHeaderColor">LOREM IPSUM DIMSUM</Header>
             </div>
             <div id="MainAlbumH2">
-            <Header size='huge'>LOREM IPSUM DIMSUM</Header>
+            <Header size='huge' id="AlbumHeaderColor">LOREM IPSUM DIMSUM</Header>
             </div>
           </Grid.Column>
         </Grid>
@@ -72,7 +73,7 @@ class Album extends Component {
           </Grid.Column>
         </Grid>
 
-        <Grid id="AlbumTop">
+        <Grid>
           <Grid.Column id="Gallery" width={16}>
             <Link to ='/albumedit'>
               <Button id="editbutton" >
@@ -83,7 +84,7 @@ class Album extends Component {
           </Grid.Column>
         </Grid>
 
-        <Grid id="AlbumTop">
+        <Grid>
           <Grid.Column id="Gallery" width={16}>
 
           </Grid.Column>
