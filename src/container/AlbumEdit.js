@@ -5,8 +5,22 @@ import { connect } from 'react-redux'
 import AlbumProfileCard from '../component/AlbumProfileCard'
 import AlbumGallery from './AlbumGallery'
 import { Link } from 'react-router-dom'
+import { SET_CURRENT_ALBUM } from '../constants/ActionTypes'
 
 class AlbumEdit extends Component {
+
+  componentDidMount () {
+    const album_id = localStorage.getItem("album_id")
+    if (album_id) {
+      fetch('http://localhost:3000/api/current_album', {
+        headers: {
+          "Authorization": album_id
+        }
+      })
+      .then(res => res.json() )
+      .then( album => this.props.setCurrentAlbum(album) )
+    }
+  }
 
   renderGalleryImages = () => {
     return this.props.current_album.images.map ( (img) => {
@@ -32,13 +46,14 @@ class AlbumEdit extends Component {
 
   handleDeleteButton = (img) => {
     console.log("delete button is being clicked!", img.id )
-    fetch(`http://localhost:3000/api/users`, {
+    const album_id = localStorage.getItem("album_id")
+    fetch(`http://localhost:3000/api/albums`, {
       method: 'DELETE',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({image_id: img.id})
     })
-    .then(res => console.log(img.id))
-
+    .then(res => res.json())
+    .then(album => this.props.setCurrentAlbum(album))
   }
 
 
@@ -93,6 +108,17 @@ class AlbumEdit extends Component {
   }
 }
 
+function mapDispatchToProps (dispatch) {
+  return {
+    setCurrentAlbum: (album_id) => {
+      dispatch({
+        type: SET_CURRENT_ALBUM,
+        payload: album_id
+      })
+    }
+  }
+}
+
 function mapStateToProps (state) {
   return {
     users: state.users,
@@ -100,4 +126,4 @@ function mapStateToProps (state) {
   }
 }
 
-export default connect(mapStateToProps) (AlbumEdit)
+export default connect(mapStateToProps, mapDispatchToProps) (AlbumEdit)
