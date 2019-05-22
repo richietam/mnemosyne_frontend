@@ -33,7 +33,6 @@ class GalleryCards extends Component {
       .then(res => res.json() )
       .then( album => this.props.setCurrentAlbum(album) )
     }
-
   }
 
   renderAlbumCard = () => {
