@@ -36,7 +36,7 @@ class GalleryCards extends Component {
   }
 
   renderAlbumCard = () => {
-    return this.props.current_user.albums.map( (album) => {
+    return this.props.albums.map( (album) => {
       return <Card
         color='orange'
         key={album.id}
@@ -61,7 +61,7 @@ class GalleryCards extends Component {
 
 
   render() {
-    console.log('in gallerycard, current state is', this.props)
+    // console.log('in gallerycard, current state is', this.props)
     if (this.state.redirect) {
      return <Redirect to='/album'/>;
    }
