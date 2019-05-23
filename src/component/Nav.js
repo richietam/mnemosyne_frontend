@@ -1,21 +1,21 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-// import { Segment } from 'semantic-ui-react'
+import { connect } from 'react-redux'
 
 class Nav extends Component {
-
   render() {
+    if (!this.props.current_user) return null
+
     return (
     <div className="navBar">
       <div className="navlinks" id="navlinks">
        <Link to='/home'>
          Home
        </Link>
-
-       <Link to='/profile'>
+       <Link to={`/profile/${this.props.current_user.id}`}>
        Profile
        </Link>
-       
+
        <Link to='/newuser'>
          New User
        </Link>
@@ -39,4 +39,11 @@ class Nav extends Component {
   }
 }
 
-export default Nav
+function mapStateToProps (state) {
+  return {
+    current_user: state.users.current_user,
+  }
+}
+
+
+export default connect(mapStateToProps) (Nav)

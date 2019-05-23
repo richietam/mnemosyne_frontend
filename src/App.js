@@ -39,7 +39,7 @@ class App extends Component {
         <Switch>
           <Route path='/newuser' render={(routeProps) => <NewUserForm {...routeProps}/>} />
           <Route path='/login' render={(routeProps) => <LoginForm {...routeProps}/>} />
-          <Route path='/profile' render={(routeProps) => <Profile {...routeProps}/>} />
+          <Route path='/profile/:user_id' render={(routeProps) => <Profile {...routeProps}/>} />
           <Route path='/newalbum' render={(routeProps) => <AlbumForm {...routeProps}/>} />
           <Route path='/album' render={routeProps => <Album {...routeProps} {...routeProps}/>} />
           <Route path='/albumedit' render={(routeProps) => <AlbumEdit {...routeProps}/>} />
@@ -52,7 +52,7 @@ class App extends Component {
   }
 }
 
-function mapDispatchToprops (dispatch) {
+function mapDispatchToProps (dispatch) {
   return {
     setUsers: (users) => {
       dispatch({
@@ -69,4 +69,4 @@ function mapDispatchToprops (dispatch) {
   }
 }
 
-export default connect(null, mapDispatchToprops) (App);
+export default connect(null, mapDispatchToProps) (App);

@@ -6,12 +6,28 @@ import ProfileMainImage from '../component/ProfileMainImage'
 import NewsFeed from '../component/NewsFeed'
 import ProfileCard from '../component/ProfileCard'
 import GalleryCards from '../component/GalleryCards'
+import { SET_CURRENT_USER } from '../constants/ActionTypes'
+import { SET_SELECTED_USER } from '../constants/ActionTypes'
 
 class Profile extends Component {
 
+  componentDidMount () {
+    const SelectedUserID = this.props.match.params.user_id
+
+      fetch('http://localhost:3000/api/auto_login', {
+        headers: {
+          "Authorization": SelectedUserID
+        }
+      })
+      .then(res => res.json())
+      .then(response=> this.props.setSelectedUser(response))
+  }
+
   render () {
-    if (!this.props.current_user) return null
-    const { avatar, username, first_name, last_name } = this.props.current_user
+
+    console.log(this.props)
+    if (!this.props.current_user || !this.props.selected_user) return null
+    const { avatar, username, first_name, last_name } = this.props.selected_user
 
     return (
 
@@ -58,6 +74,7 @@ class Profile extends Component {
           </div>
           <GalleryCards
             handleAlbumClick={this.handleAlbumClick}
+            albums={this.props.selected_user.albums}
           />
         </Grid.Column>
 
@@ -67,14 +84,30 @@ class Profile extends Component {
   }
 }
 
+function mapDispatchToProps (dispatch) {
+  return {
+    setCurrentUser: (user) => {
+      dispatch({
+        type: SET_CURRENT_USER,
+        payload: user
+      })
+    },
+    setSelectedUser: (user) => {
+      dispatch({
+        type: SET_SELECTED_USER,
+        payload: user
+      })
+    }
+  }
+}
 
+// const mapStateToProps = ({ users: {current_user} } ) => ({ current_user })
 
-const mapStateToProps = ({ users: {current_user} } ) => ({ current_user })
+function mapStateToProps (state) {
+  return {
+    current_user: state.users.current_user,
+    selected_user: state.users.selected_user,
+  }
+}
 
-// function mapStateToProps (state) {
-//   return {
-//     current_user: state.users.current_user,
-//   }
-// }
-
-export default connect(mapStateToProps) (Profile)
+export default connect(mapStateToProps, mapDispatchToProps) (Profile)
