@@ -35,7 +35,7 @@ class LoginForm extends Component {
         } else {
           this.props.setCurrentUser(response)
           localStorage.setItem("user_id", response.id)
-          this.props.history.push('/profile')
+          this.props.history.push(`/profile/${response.id}`)
         }
     })
 

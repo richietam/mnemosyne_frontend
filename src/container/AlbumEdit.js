@@ -46,7 +46,7 @@ class AlbumEdit extends Component {
 
   handleDeleteButton = (img) => {
     console.log("delete button is being clicked!", img.id )
-    const album_id = localStorage.getItem("album_id")
+  
     fetch(`http://localhost:3000/api/albums`, {
       method: 'DELETE',
       headers: {'Content-Type': 'application/json'},

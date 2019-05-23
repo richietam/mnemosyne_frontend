@@ -38,17 +38,18 @@ class GalleryCards extends Component {
   renderAlbumCard = () => {
     return this.props.albums.map( (album) => {
       return <Card
-        color='orange'
-        key={album.id}
-        id={album.id}
-        extra={extra}
-        image={album.images[0].image_url}
-        onClick={ () => this.handleAlbumClick(album) }
-        fluid
+      color='orange'
+      key={album.id}
+      id={album.id}
+      extra={extra}
+      image={album.images[0].image_url}
+      onClick={ () => this.handleAlbumClick(album) }
+      fluid
       />
     }
   )
   }
+
 
   handleAlbumClick = (album) => {
     this.props.setCurrentAlbum(album)
@@ -66,7 +67,7 @@ class GalleryCards extends Component {
      return <Redirect to='/album'/>;
    }
     return(
-      <Card.Group itemsPerRow={4}>
+      <Card.Group itemsPerRow={3}>
         {this.renderAlbumCard()}
       </Card.Group>
     )

@@ -1,15 +1,17 @@
 import React from 'react'
 import { Card, Icon, Image, Button } from 'semantic-ui-react'
 
-const ProfileCard = (props) => (
-  <Card id="ProfileCard">
+const ProfileCard = (props) => {
+  console.log(props, parseInt(localStorage.getItem("user_id")) )
+  const userID = parseInt(localStorage.getItem("user_id"))
+return  <Card id="ProfileCard">
     <Image src={props.avatar} wrapped ui={false} />
     <Card.Content>
-      <Button
+      {userID === props.id ? null : <Button
         id="ProfileCardButton"
       >
         {`Follow ${props.username}`}
-      </Button>
+      </Button>}
       <Card.Header>{props.username}</Card.Header>
       <Card.Meta>
         <span className='date'>Joined in 2015</span>
@@ -37,6 +39,6 @@ const ProfileCard = (props) => (
       </a>
     </Card.Content>
   </Card>
-)
+}
 
 export default ProfileCard
