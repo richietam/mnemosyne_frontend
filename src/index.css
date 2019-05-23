@@ -1,4 +1,4 @@
-body {
+ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -108,6 +108,16 @@ a:hover {
   position: relative;
   margin-bottom: 2%;
 
+}
+
+#ProfileAlbumCardImage {
+  height: auto;
+  max-height: 650px;
+  width: auto;
+  max-width: 250px;
+  border-style: double;
+  border-color: black;
+  object-fit: cover
 }
 
 /* ************************** Profile Card **************************** */

@@ -24,10 +24,9 @@ class Profile extends Component {
   }
 
   render () {
-
     console.log(this.props)
     if (!this.props.current_user || !this.props.selected_user) return null
-    const { avatar, username, first_name, last_name } = this.props.selected_user
+    const { avatar, username, first_name, last_name, id } = this.props.selected_user
 
     return (
 
@@ -47,6 +46,7 @@ class Profile extends Component {
           <ProfileCard
             avatar={avatar}
             username={username.charAt(0).toUpperCase() + username.slice(1)}
+            id={id}
           />
         </Grid.Column>
 

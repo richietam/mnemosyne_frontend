@@ -39,7 +39,7 @@ class Album extends Component {
         <Grid>
           <Grid.Column width={16} id="AlbumTop">
             <div id="MainAlbumImage">
-              <img src={this.props.current_album.images[0].image_url} />
+              <img src={this.props.current_album.images[0].image_url} alt=""/>
             </div>
             <div id="MainAlbumH1">
             <Header size='huge' id="AlbumHeaderColor">LOREM IPSUM DIMSUM</Header>
