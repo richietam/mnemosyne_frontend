@@ -2,12 +2,12 @@ import React from 'react'
 import { Card, Icon, Image, Button } from 'semantic-ui-react'
 
 const ProfileCard = (props) => {
-  console.log(props, parseInt(localStorage.getItem("user_id")) )
   const userID = parseInt(localStorage.getItem("user_id"))
-return  <Card id="ProfileCard">
+  return  <Card id="ProfileCard">
     <Image src={props.avatar} wrapped ui={false} />
     <Card.Content>
-      {userID === props.id ? null : <Button
+      {userID === props.id ? null :
+      <Button
         id="ProfileCardButton"
       >
         {`Follow ${props.username}`}

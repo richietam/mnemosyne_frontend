@@ -41,7 +41,7 @@ class App extends Component {
           <Route path='/login' render={(routeProps) => <LoginForm {...routeProps}/>} />
           <Route path='/profile/:user_id' render={(routeProps) => <Profile {...routeProps}/>} />
           <Route path='/newalbum' render={(routeProps) => <AlbumForm {...routeProps}/>} />
-          <Route path='/album' render={routeProps => <Album {...routeProps} {...routeProps}/>} />
+          <Route path='/albums/:id' render={routeProps => <Album {...routeProps} {...routeProps}/>} />
           <Route path='/albumedit' render={(routeProps) => <AlbumEdit {...routeProps}/>} />
           <Route exact path='/' component={ Welcome } />
           <Route component={ Welcome } />

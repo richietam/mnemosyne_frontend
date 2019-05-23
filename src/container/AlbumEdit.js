@@ -3,7 +3,7 @@ import { Header, Grid, Card, Image, Button, Divider } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 // import { Redirect } from 'react-router'
 import AlbumProfileCard from '../component/AlbumProfileCard'
-import AlbumGallery from './AlbumGallery'
+// import AlbumGallery from './AlbumGallery'
 import { Link } from 'react-router-dom'
 import { SET_CURRENT_ALBUM } from '../constants/ActionTypes'
 
@@ -46,7 +46,7 @@ class AlbumEdit extends Component {
 
   handleDeleteButton = (img) => {
     console.log("delete button is being clicked!", img.id )
-  
+
     fetch(`http://localhost:3000/api/albums`, {
       method: 'DELETE',
       headers: {'Content-Type': 'application/json'},
@@ -98,7 +98,7 @@ class AlbumEdit extends Component {
 
         <Grid >
           <Grid.Column id="Gallery" width={16}>
-            <AlbumGallery/>
+
           </Grid.Column>
         </Grid>
 
