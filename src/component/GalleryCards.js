@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Card } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router'
 import { SET_CURRENT_ALBUM } from '../constants/ActionTypes'
 
 const extra = (
@@ -34,8 +33,8 @@ class GalleryCards extends Component {
       .then( album => this.props.setCurrentAlbum(album) )
     }
   }
-
   renderAlbumCard = () => {
+
     return this.props.albums.map( (album) => {
       return <Card
       color='orange'
@@ -52,20 +51,20 @@ class GalleryCards extends Component {
 
 
   handleAlbumClick = (album) => {
+
     this.props.setCurrentAlbum(album)
     localStorage.setItem("album_id", album.id)
-    this.setState({
-      redirect: true
-    })
+    // this.setState({
+    //   redirect: true
+    // })
+    this.props.routeProps.push(`/albums/${album.id}`)
     console.log("i am being clicked!", album)
   }
 
 
   render() {
-    // console.log('in gallerycard, current state is', this.props)
-    if (this.state.redirect) {
-     return <Redirect to='/album'/>;
-   }
+    console.log('in gallerycard, current props are', this.props)
+
     return(
       <Card.Group itemsPerRow={3}>
         {this.renderAlbumCard()}
