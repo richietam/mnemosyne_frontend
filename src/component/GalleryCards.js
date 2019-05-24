@@ -63,7 +63,7 @@ class GalleryCards extends Component {
 
 
   render() {
-    console.log('in gallerycard, current props are', this.props)
+    // console.log('in gallerycard, current props are', this.props)
 
     return(
       <Card.Group itemsPerRow={3}>
