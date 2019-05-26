@@ -4,20 +4,21 @@ import { Card, Icon, Image, Button } from 'semantic-ui-react'
 const ProfileCard = (props) => {
   const userID = parseInt(localStorage.getItem("user_id"))
 
-  const handleFollow = () => {
+  const handleButtonClick = () => {
     props.handleFollow(props.currentUser, props.selectedUser)
     console.log('i am being clicked', props)
   }
 
+  console.log('in profile card', props)
   return  <Card id="ProfileCard">
     <Image src={props.avatar} wrapped ui={false} />
     <Card.Content>
-      {userID === props.id ? null :
+      {userID === props.selectedUserID ? null :
       <Button
         id="ProfileCardButton"
-        onClick={handleFollow}
+        onClick={handleButtonClick}
       >
-        {`Follow ${props.username}`}
+        {`${props.buttonText} ${props.username}`}
       </Button>}
       <Card.Header>{props.username}</Card.Header>
       <Card.Meta>

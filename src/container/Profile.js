@@ -12,7 +12,7 @@ import { SET_SELECTED_USER } from '../constants/ActionTypes'
 class Profile extends Component {
 
   componentDidMount () {
-    // console.log('in component did mount')
+    console.log('in component did mount')
     const SelectedUserID = this.props.match.params.user_id
       fetch('http://localhost:3000/api/auto_login', {
         headers: {
@@ -24,7 +24,7 @@ class Profile extends Component {
   }
 
   shouldComponentUpdate (nextProps) {
-    // console.log('in shoudlcomponentupdate', nextProps.match.params.user_id, this.props.match.params.user_id)
+    console.log('in shoudlcomponentupdate', nextProps.match.params.user_id, this.props.match.params.user_id)
     if (nextProps.match.params.user_id !== this.props.match.params.user_id) {
     const SelectedUserID = nextProps.match.params.user_id
       fetch('http://localhost:3000/api/auto_login', {
@@ -54,10 +54,55 @@ class Profile extends Component {
       if (response.error) {
         alert("u alredy fullowin dis")
       } else {
-        console.log(response)
+        this.props.setCurrentUser(response)
       }
     })
   }
+
+  handleUnfollow = (currentUser, selectedUser) => {
+    fetch('http://localhost:3000/api/follow', {
+      method: 'DELETE',
+      body: JSON.stringify({
+        user_id: currentUser,
+        followed_user_id: selectedUser
+      }),
+      headers:{
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(res => res.json())
+    .then(response=> {
+      this.props.setCurrentUser(response)
+    })
+  }
+
+   checkFollowStatus = (currentUser, selectedUser) => {
+    //user is on their own profile page, follow/unfollow button will not render
+    if (!this.props.current_user) return null
+
+    const currentUser_followed_ids = this.props.current_user.followed_users.map(user => user.id)
+
+    if( currentUser_followed_ids.includes(this.props.selected_user.id)) {
+      return this.handleUnfollow(currentUser, selectedUser)
+    } else {
+      return this.handleFollow(currentUser, selectedUser)
+    }
+  }
+
+   profileCardButtonText = () => {
+    //user is on their own profile page, follow/unfollow button will not render
+    if (!this.props.current_user) return null
+
+    const currentUser_followed_ids = this.props.current_user.followed_users.map(user => user.id)
+
+    if( currentUser_followed_ids.includes(this.props.selected_user.id)) {
+      return "Unfollow"
+    } else {
+      return "Follow"
+    }
+  }
+
+
 
   render () {
     console.log(this.props)
@@ -73,6 +118,7 @@ class Profile extends Component {
             username={username.charAt(0).toUpperCase() + username.slice(1)}
             first_name={first_name.charAt(0).toUpperCase() + first_name.slice(1)}
             last_name={last_name.charAt(0).toUpperCase() + last_name.slice(1)}
+            currentUser={this.props.currentUser}
           />
         </Grid.Column>
       </Grid>
@@ -82,10 +128,11 @@ class Profile extends Component {
           <ProfileCard
             avatar={avatar}
             username={username.charAt(0).toUpperCase() + username.slice(1)}
-            id={id}
+            selectedUserID={id}
             currentUser={this.props.current_user.id}
             selectedUser={id}
-            handleFollow={this.handleFollow}
+            handleFollow={this.checkFollowStatus}
+            buttonText={this.profileCardButtonText()}
           />
         </Grid.Column>
 
