@@ -12,7 +12,7 @@ import { SET_SELECTED_USER } from '../constants/ActionTypes'
 class Profile extends Component {
 
   componentDidMount () {
-    console.log('in component did mount')
+    // console.log('in component did mount')
     const SelectedUserID = this.props.match.params.user_id
       fetch('http://localhost:3000/api/auto_login', {
         headers: {
@@ -24,7 +24,7 @@ class Profile extends Component {
   }
 
   shouldComponentUpdate (nextProps) {
-    console.log('in shoudlcomponentupdate', nextProps.match.params.user_id, this.props.match.params.user_id)
+    // console.log('in shoudlcomponentupdate', nextProps.match.params.user_id, this.props.match.params.user_id)
     if (nextProps.match.params.user_id !== this.props.match.params.user_id) {
     const SelectedUserID = nextProps.match.params.user_id
       fetch('http://localhost:3000/api/auto_login', {
@@ -102,12 +102,10 @@ class Profile extends Component {
     }
   }
 
-
-
   render () {
     console.log(this.props)
     if (!this.props.current_user || !this.props.selected_user) return null
-    const { avatar, username, first_name, last_name, id } = this.props.selected_user
+    const { avatar, username, first_name, last_name, id, followings, followers, photosUploaded } = this.props.selected_user
 
     return (
 
@@ -133,6 +131,9 @@ class Profile extends Component {
             selectedUser={id}
             handleFollow={this.checkFollowStatus}
             buttonText={this.profileCardButtonText()}
+            followings={followings}
+            followers={followers}
+            photosUploaded={photosUploaded}
           />
         </Grid.Column>
 
@@ -151,13 +152,18 @@ class Profile extends Component {
           id="GalleryCardsGrid"
         >
           <Header as='h2'>{first_name.charAt(0).toUpperCase() + first_name.slice(1) + "'s Albums:"}</Header>
-          <div id="NewGalleryButton">
-          <Link to ='/newalbum'>
-          <Button id="HomeButton" >
-            <Button.Content visible>+ New Gallery</Button.Content>
-          </Button>
-          </Link>
-          </div>
+          {
+            this.props.current_user.id === id ?
+              <div id="NewGalleryButton">
+              <Link to ='/newalbum'>
+              <Button id="HomeButton" >
+                <Button.Content visible>+ New Gallery</Button.Content>
+              </Button>
+              </Link>
+              </div>
+            :
+              null
+          }
           <GalleryCards
             handleAlbumClick={this.handleAlbumClick}
             albums={this.props.selected_user.albums}

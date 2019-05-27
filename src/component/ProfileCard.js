@@ -9,7 +9,7 @@ const ProfileCard = (props) => {
     console.log('i am being clicked', props)
   }
 
-  console.log('in profile card', props)
+  // console.log('in profile card', props)
   return  <Card id="ProfileCard">
     <Image src={props.avatar} wrapped ui={false} />
     <Card.Content>
@@ -31,19 +31,19 @@ const ProfileCard = (props) => {
     <Card.Content extra>
       <a href="google.com">
         <Icon name='user' />
-        24,225 Followers
+        {`${props.followers.length} followers`}
       </a>
     </Card.Content>
     <Card.Content extra>
       <a href="google.com">
         <Icon name='hand lizard' />
-        2,312 Following
+        {`${props.followings.length} following`}
       </a>
     </Card.Content>
     <Card.Content extra>
       <a href="google.com">
         <Icon name='camera retro' />
-        22,222 Photos Uploaded
+        {`${props.photosUploaded} photos`}
       </a>
     </Card.Content>
   </Card>
