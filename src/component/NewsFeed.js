@@ -20,7 +20,7 @@ const NewsFeed = (props) => {
           <Feed.Content>
             {/*<Feed.Date content='1 day ago' />*/}
             <Feed.Summary>
-              <img id="newsFeedAvatar" src={avatar[0].avatar}/>
+              <img id="newsFeedAvatar" alt="News Feed Avatar" src={avatar[0].avatar}/>
               <Link id="newsFeedLink" to={`/profile/${event.user_id}`}> {event.activity_owner_username}</Link> {""} created a new <Link id="newsFeedLink" to={`/album/${event.album_created_id}`}>album.</Link>
             </Feed.Summary>
           </Feed.Content>
@@ -35,7 +35,7 @@ const NewsFeed = (props) => {
           <Feed.Content>
             {/*<Feed.Date content='1 day ago' />*/}
             <Feed.Summary>
-              <img id="newsFeedAvatar" src={avatar[0].avatar}/> {""}
+              <img id="newsFeedAvatar" alt="News Feed Avatar" src={avatar[0].avatar}/> {""}
               <Link id="newsFeedLink" to={`/profile/${event.user_id}`}>{event.activity_owner_username}</Link> started following {""}
               <Link id="newsFeedLink" to={`/profile/${event.followed_user_id}`}>{event.followed_user_username}.</Link>
             </Feed.Summary>
