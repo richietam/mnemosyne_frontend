@@ -7,22 +7,35 @@ const NewsFeed = (props) => {
 
   const renderEvents = () => {
     return props.newsFeed.map( event => {
+
+      const avatar = props.followed_users.filter( user => {
+        return user.id === event.user_id
+      })
+
       if(event.activity_type ==="newAlbum"){
-        return <Feed.Event key={event.id}>
-          <Feed.Label image='https://react.semantic-ui.com/images/avatar/small/jenny.jpg' />
+        return <Feed.Event
+          key={event.id}
+          id="feedEvent"
+          >
           <Feed.Content>
-            <Feed.Date content='1 day ago' />
+            {/*<Feed.Date content='1 day ago' />*/}
             <Feed.Summary>
-              <Link id="newsFeedLink" to={`/profile/${event.user_id}`}> {event.activity_owner_username}</Link> created a new <Link id="newsFeedLink" to={`/album/${event.album_created_id}`}>album.</Link>
+              <img id="newsFeedAvatar" src={avatar[0].avatar}/>
+              <Link id="newsFeedLink" to={`/profile/${event.user_id}`}> {event.activity_owner_username}</Link> {""} created a new <Link id="newsFeedLink" to={`/album/${event.album_created_id}`}>album.</Link>
             </Feed.Summary>
           </Feed.Content>
         </Feed.Event>
+
       } else if(event.activity_type==="follow"){
-        return <Feed.Event key={event.id}>
-          <Feed.Label image='https://react.semantic-ui.com/images/avatar/small/jenny.jpg' />
+
+        return <Feed.Event
+            key={event.id}
+            id="feedEvent"
+          >
           <Feed.Content>
-            <Feed.Date content='1 day ago' />
+            {/*<Feed.Date content='1 day ago' />*/}
             <Feed.Summary>
+              <img id="newsFeedAvatar" src={avatar[0].avatar}/> {""}
               <Link id="newsFeedLink" to={`/profile/${event.user_id}`}>{event.activity_owner_username}</Link> started following {""}
               <Link id="newsFeedLink" to={`/profile/${event.followed_user_id}`}>{event.followed_user_username}.</Link>
             </Feed.Summary>

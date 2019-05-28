@@ -147,6 +147,7 @@ class Profile extends Component {
             newsFeed={this.props.selected_user.newsFeed}
             currentUser={this.props.current_user.id}
             selectedUser={id}
+            followed_users={this.props.current_user.followed_users}
           />
 
         </Grid.Column>

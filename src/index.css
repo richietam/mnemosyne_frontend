@@ -179,6 +179,17 @@ a:hover {
   color: red
 }
 
+#newsFeedAvatar {
+  height:30px;
+  width: 30px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+#feedEvent {
+  margin-bottom: 5px;
+}
+
 /* **************************Borders **************************** */
 
 #RedBorder {
@@ -307,11 +318,11 @@ a:hover {
 
 #photoGrid {
   line-height: 0;
-  webkit-column-count: 3;
+  webkit-column-count: 4;
   webkit-column-gap:   15px;
-  moz-column-count:    3;
+  moz-column-count:    4;
   moz-column-gap:      15px;
-  column-count:         3;
+  column-count:         4;
   column-gap:           15px;
   width: 100%;
 }
