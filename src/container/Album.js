@@ -4,14 +4,32 @@ import { connect } from 'react-redux'
 import AlbumProfileCard from '../component/AlbumProfileCard'
 import { Link } from 'react-router-dom'
 import { SET_CURRENT_ALBUM } from '../constants/ActionTypes'
+import { Lightbox } from 'react-modal-image'
 
 class Album extends Component {
+
+  state = {
+    open: false,
+    lightboxUrl: null
+  }
 
   renderGalleryImages = () => {
     return this.props.current_album.images.map( (img) => {
       return <Image
         src={img.image_url}
-        fluid
+        key={img.id}
+        id="test2"
+      />
+    })
+  }
+
+  renderGalleryImages2 = () => {
+    return this.props.current_album.images.map( (img) => {
+      return <img
+        src={img.image_url}
+        alt=""
+        id=""
+        onClick={ () => this.handleImageClick(img.image_url)}
         key={img.id}
       />
     })
@@ -29,6 +47,20 @@ class Album extends Component {
       .then(res => res.json() )
       .then( album => this.props.setCurrentAlbum(album) )
     }
+  }
+
+  handleImageClick = (url) => {
+    this.setState({
+      open: true,
+      lightboxUrl: url
+    })
+    console.log("I was clicked", url )
+  }
+
+  closeLightbox = () => {
+    this.setState({
+      open: false
+    })
   }
 
   render () {
@@ -80,18 +112,32 @@ class Album extends Component {
                 <Button.Content visible>Edit Album</Button.Content>
               </Button>
             </Link>
-            {this.renderGalleryImages()}
+
           </Grid.Column>
         </Grid>
 
         <Grid>
           <Grid.Column id="Gallery" width={16}>
-
           </Grid.Column>
         </Grid>
 
+        <div id="photoGrid">
+        {this.renderGalleryImages2()}
+        </div>
 
+        {
+          this.state.open && (
+            <Lightbox
+              id="lightbox"
+              large={this.state.lightboxUrl}
+              onClose={this.closeLightbox}
+              hideZoom={true}
+              hideDownload={true}
+            />
+          )
+        }
       </div>
+
     )
   }
 }

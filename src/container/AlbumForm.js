@@ -51,8 +51,39 @@ class AlbumForm extends Component {
   }
 
   handleDrop = (droppedFiles) => {
+
+    if (this.state.files) {
+      const combinedFiles = this.state.files.concat(droppedFiles)
+      this.setState({
+        files: combinedFiles
+      })
+    } else {
+      this.setState({
+        files: droppedFiles
+
+      })
+
+    }
+  }
+
+  handlePreviewClick = (index) => {
+    console.log('preview image being clicked', index)
+    this.state.files.splice(index, 1)
     this.setState({
-      files: droppedFiles
+      files: this.state.files
+    })
+  }
+
+  renderUploadPreview = () => {
+    return this.state.files.map( (file, index) => {
+      return <div>
+        <img
+          id="imagePreview"
+          src={URL.createObjectURL(file)}
+          onClick={() => this.handlePreviewClick(index)}
+        />
+        {file.name} {index}
+      </div>
     })
   }
 
@@ -89,13 +120,15 @@ class AlbumForm extends Component {
                 />
               </Form.Field>
 
-              <Dropzone onDrop={this.handleDrop}>
-              {({getRootProps, getInputProps}) => (
+              <Dropzone
+                onDrop={this.handleDrop}
+              >
+                {({getRootProps, getInputProps}) => (
                 <section>
                 <div id="dropzone" {...getRootProps()}>
-                <input {...getInputProps()} />
-                <Icon name='user circle' size='huge' id="fileImage" />
-                <p>Drag or click to upload your gallery photos!</p>
+                  <input {...getInputProps()} />
+                  <Icon name='user circle' size='huge' id="fileImage" />
+                  <p>Drag or click to upload your gallery photos!</p>
                 </div>
                 </section>
               )}
@@ -107,16 +140,13 @@ class AlbumForm extends Component {
 
           </Grid.Column>
         </Grid>
+          {
+            this.state.files ?
+              this.renderUploadPreview()
+             :
+              null
+           }
 
-        <Grid>
-          <Grid.Column
-            width={16}
-          >
-            <PreviewGalleryCards
-              files={this.state.files}
-            />
-          </Grid.Column>
-        </Grid>
 
         <Button
           type='submit'
