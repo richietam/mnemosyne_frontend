@@ -3,7 +3,7 @@ import { Button, Form, Icon, Header, Grid } from 'semantic-ui-react'
 import Dropzone from 'react-dropzone'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
-import PreviewGalleryCards from '../component/PreviewGalleryCards'
+// import PreviewGalleryCards from '../component/PreviewGalleryCards'
 
 class AlbumForm extends Component {
 
@@ -51,7 +51,6 @@ class AlbumForm extends Component {
   }
 
   handleDrop = (droppedFiles) => {
-
     if (this.state.files) {
       const combinedFiles = this.state.files.concat(droppedFiles)
       this.setState({
@@ -60,9 +59,7 @@ class AlbumForm extends Component {
     } else {
       this.setState({
         files: droppedFiles
-
       })
-
     }
   }
 
@@ -79,6 +76,7 @@ class AlbumForm extends Component {
       return <div>
         <img
           id="imagePreview"
+          alt="file preview"
           src={URL.createObjectURL(file)}
           onClick={() => this.handlePreviewClick(index)}
         />

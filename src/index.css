@@ -20,6 +20,8 @@ a:hover {
 }
 
 
+
+
 /* **************************NEW USER FORM **************************** */
 
 #form {
@@ -168,6 +170,13 @@ a:hover {
   position: relative;
   margin-top: 25px;
   width: 95%;
+}
+
+#newsFeedLink {
+  color: blue
+}
+#newsFeedLink:hover {
+  color: red
 }
 
 /* **************************Borders **************************** */

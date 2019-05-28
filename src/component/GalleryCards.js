@@ -57,7 +57,7 @@ class GalleryCards extends Component {
     // this.setState({
     //   redirect: true
     // })
-    this.props.routeProps.push(`/albums/${album.id}`)
+    this.props.routeProps.push(`/album/${album.id}`)
     console.log("i am being clicked!", album)
   }
 

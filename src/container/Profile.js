@@ -54,6 +54,7 @@ class Profile extends Component {
       if (response.error) {
         alert("u alredy fullowin dis")
       } else {
+        console.log('follow', response)
         this.props.setCurrentUser(response)
       }
     })
@@ -72,6 +73,7 @@ class Profile extends Component {
     })
     .then(res => res.json())
     .then(response=> {
+      console.log('unfollow', response)
       this.props.setCurrentUser(response)
     })
   }
@@ -141,7 +143,11 @@ class Profile extends Component {
           width={11}
           id="RedBorder"
         >
-          <NewsFeed />
+          <NewsFeed
+            newsFeed={this.props.selected_user.newsFeed}
+            currentUser={this.props.current_user.id}
+            selectedUser={id}
+          />
 
         </Grid.Column>
       </Grid>
