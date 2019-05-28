@@ -115,6 +115,7 @@ class Profile extends Component {
       <Grid>
         <Grid.Column width={16}>
           <ProfileMainImage
+            className=""
             username={username.charAt(0).toUpperCase() + username.slice(1)}
             first_name={first_name.charAt(0).toUpperCase() + first_name.slice(1)}
             last_name={last_name.charAt(0).toUpperCase() + last_name.slice(1)}
@@ -174,6 +175,7 @@ class Profile extends Component {
           <GalleryCards
             handleAlbumClick={this.handleAlbumClick}
             albums={this.props.selected_user.albums}
+            selected_user={this.props.selected_user}
             routeProps={this.props.history}
           />
         </Grid.Column>

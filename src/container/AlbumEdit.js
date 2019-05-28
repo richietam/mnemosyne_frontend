@@ -30,11 +30,9 @@ class AlbumEdit extends Component {
         size='tiny'
         verticalAlign='top'
       />
-      <span>
-        {img.id}
-      </span>
+
       <Button
-        id="editbutton"
+        id="editButton"
         onClick={ () => this.handleDeleteButton(img)}
       >
         <Button.Content visible>Delete Image</Button.Content>
@@ -86,7 +84,7 @@ class AlbumEdit extends Component {
         </Grid>
 
         <Grid>
-          <Grid.Column id="Gallery" width={16}>
+          <Grid.Column id="editGallery" width={16}>
             <Link to ='/album'>
               <Button id="GalleryButton" >
                 <Button.Content visible>Save Edits</Button.Content>
