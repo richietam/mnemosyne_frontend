@@ -103,12 +103,17 @@ class Album extends Component {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
           </Header>
           </Grid.Column>
+
         </Grid>
 
-        <Grid>
+        <Grid id="GalleryCardsGrid">
           <Grid.Column id="Gallery" width={16}>
+          <div
+            class="ui divider"
+            id="Divider">
+          </div>
             <Link to ='/albumedit'>
-              <Button id="editbutton" >
+              <Button id="Button" >
                 <Button.Content visible>Edit Album</Button.Content>
               </Button>
             </Link>

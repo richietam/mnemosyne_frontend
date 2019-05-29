@@ -80,7 +80,7 @@ class GalleryCards extends Component {
   renderAlbumCard3 = () => {
 
     return this.props.albums.map( (album) => {
-      return <section className="" key={album.id} onClick={ () => this.handleAlbumClick(album) } className="galleryCard">
+      return <section key={album.id} onClick={ () => this.handleAlbumClick(album) } className="galleryCard">
       <article className="card card--1">
         <div className="card__info-hover">
           <svg className="card__like"  viewBox="0 0 24 24">
@@ -109,7 +109,7 @@ class GalleryCards extends Component {
          </div>
 
       <div className="card__info">
-        <span className="card__category"> Album Name</span>
+        <span className="card__category">{album.name}</span>
         <h3 className="card__title">Lorem ipsum dimsum</h3>
         <span className="card__by">by <a href="google.com" className="card__author" title="author">{this.props.selected_user.username} + 2 friends</a></span>
       </div>
@@ -143,11 +143,6 @@ class GalleryCards extends Component {
     )
   }
 }
-
-
-
-
-
 
 const mapStateToProps = ({ users: {current_user} } ) => ({ current_user })
 

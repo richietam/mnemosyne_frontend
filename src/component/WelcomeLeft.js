@@ -1,9 +1,13 @@
 import React from 'react'
-import { Image } from 'semantic-ui-react'
+
 
 const WelcomeLeft = (props) => (
   <div className="WelcomeLeft">
-    <Image src='https://web.500px.com/static/media/licensing.5b0dbbbf.jpg' />
+    <img
+      id="WelcomeLeftImage"
+      src='https://i.gifer.com/YK2d.gif'
+      alt="WelcomeGif"
+    />
   </div>
 )
 

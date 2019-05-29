@@ -77,6 +77,7 @@ class AlbumForm extends Component {
         <img
           id="imagePreview"
           alt="file preview"
+          key={index}
           src={URL.createObjectURL(file)}
           onClick={() => this.handlePreviewClick(index)}
         />

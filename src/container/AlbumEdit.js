@@ -84,9 +84,9 @@ class AlbumEdit extends Component {
         </Grid>
 
         <Grid>
-          <Grid.Column id="editGallery" width={16}>
+          <Grid.Column id="GalleryCardsGrid" width={16}>
             <Link to ='/album'>
-              <Button id="GalleryButton" >
+              <Button id="Button" >
                 <Button.Content visible>Save Edits</Button.Content>
               </Button>
             </Link>
