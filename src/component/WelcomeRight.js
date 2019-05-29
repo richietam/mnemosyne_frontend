@@ -6,13 +6,13 @@ class WelcomeRight extends Component {
   render () {
     return (
       <div className="WelcomeRight">
-        <Header size='huge'>PROJECT MNEMOSYNE</Header>
-        <p>
-          Lucas ipsum dolor sit amet ben vader jinn ewok fett leia bothan kenobi secura wedge. Gonk ventress anakin mandalore bothan moff boba. Moff skywalker skywalker solo calamari jade mara. Ahsoka solo kamino solo biggs jabba fett. Gonk wampa skywalker calamari skywalker.
+        <Header size='huge' id="WelcomeRightH1">PROJECT MNEMOSYNE</Header>
+        <p id="WelcomeRightP">
+          Beautiful user created photo albums designed for friends, family, and strangers to curate their best photos online.
         </p>
         <Link to ='/newuser'>
         <Button id="HomeButton" >
-          <Button.Content visible>Sign up</Button.Content>
+          <Button.Content visible id="HomebuttonText">Sign up</Button.Content>
         </Button>
         </Link>
     </div>

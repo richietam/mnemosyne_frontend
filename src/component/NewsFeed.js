@@ -22,6 +22,7 @@ const NewsFeed = (props) => {
             <Feed.Summary>
               <img id="newsFeedAvatar" alt="News Feed Avatar" src={avatar[0].avatar}/>
               <Link id="newsFeedLink" to={`/profile/${event.user_id}`}> {event.activity_owner_username}</Link> {""} created a new <Link id="newsFeedLink" to={`/album/${event.album_created_id}`}>album.</Link>
+              <div className="ui divider" id="Divider"></div>
             </Feed.Summary>
           </Feed.Content>
         </Feed.Event>
@@ -38,6 +39,10 @@ const NewsFeed = (props) => {
               <img id="newsFeedAvatar" alt="News Feed Avatar" src={avatar[0].avatar}/> {""}
               <Link id="newsFeedLink" to={`/profile/${event.user_id}`}>{event.activity_owner_username}</Link> started following {""}
               <Link id="newsFeedLink" to={`/profile/${event.followed_user_id}`}>{event.followed_user_username}.</Link>
+              <div
+                className="ui divider"
+                id="Divider">
+              </div>
             </Feed.Summary>
           </Feed.Content>
         </Feed.Event>
@@ -58,7 +63,7 @@ const NewsFeed = (props) => {
             props.currentUser === props.selectedUser ?
               renderEvents()
             :
-              "To be updated to show this user's latest activities!"
+              "Public Newsfeed display feature to be implemented"
           }
         </Feed>
       </Card.Content>

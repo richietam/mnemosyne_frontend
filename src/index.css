@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
+
  body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -7,20 +10,29 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
+/* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
-}
+} */
 
 a {
-  color: black;
+  color: #23305E;
 }
 a:hover {
   color: red
 }
 
+#Button {
+  background-color: #F3C130;
+  padding: 1%;
+  font-weight: 600;
+  font-family: 'Raleway', sans-serif;
+  color: #23305E;
+}
 
-
+#Divider {
+  margin-bottom: 1px;
+}
 
 /* **************************NEW USER FORM **************************** */
 
@@ -53,41 +65,67 @@ a:hover {
 
 /* ************************** Home Page **************************** */
 
+body{
+  background-color: #EEEEEE
+}
+
 .WelcomeRight {
   padding-top: 30%;
-  border-color: red;
-  border-style: solid;
-  height: 100%
+  height: 100%;
 }
 
 .WelcomeLeft {
-  border-color: red;
   padding: 6%;
-  border-style: solid;
   height: 100%
 }
 
-#HomeButton {
-  background-color: ;
-  padding-left: 40px;
-  padding-right: 40px;
+#WelcomeLeftImage{
+  width: 100%;
+  height: auto;
+  object-fit: cover;
 }
+
+#HomeButton {
+  background-color: #F3C130;
+  padding-left: 75px;
+  padding-right: 75px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+#HomeButton:hover{
+  background-color: #385C83;
+}
+
+#HomebuttonText {
+  color: #23305E;
+  font-size: 1.25em;
+}
+
+#WelcomeRightH1 {
+  color: #23305E;
+  font-size: 4em;
+}
+
+#WelcomeRightP {
+  color: #23305E;
+  font-size: 1.5em;
+}
+
 
 /* ************************** Profile **************************** */
 
 #profile {
   z-index: 1;
   position: relative;
-  border-style: solid;
-  border-color: green;
   height: 100%;
-  margin-top: -50px;
 }
 
 .ProfileMainImage {
   z-index: 1;
+  margin-top: -6%;
   position: relative;
-  background-color: #ECAF68;
+  background-color: #23305E;
   height: 450px;
   overflow:hidden;
   clear:both;
@@ -96,6 +134,7 @@ a:hover {
 #ProfileMainImageH1 {
   position: absolute;
   color: #eeeeee;
+  font-family: 'Raleway', sans-serif;
   font-size: 5vh;
   margin-top: 300px;
   margin-left: 35%;
@@ -105,6 +144,7 @@ a:hover {
   margin-left: 35%;
   margin-top: 350px;
   font-size: 3vh;
+  font-family: 'Raleway', sans-serif;
   color: #eeeeee;
   position: absolute;
 }
@@ -112,7 +152,6 @@ a:hover {
 #NewGalleryButton {
   position: relative;
   margin-bottom: 2%;
-
 }
 
 #ProfileAlbumCardImage {
@@ -120,7 +159,6 @@ a:hover {
   max-height: 650px;
   width: auto;
   max-width: 250px;
-  border-style: double;
   object-fit: cover;
 }
 
@@ -130,11 +168,17 @@ a:hover {
 #ProfileCard {
   z-index: 2;
   position: relative;
-  margin-left: 8%;
+  margin-left: 15%;
   margin-top: -170px;
   padding: 10px;
 }
 
+#ProfileCardAvatar {
+  width: auto;
+  height: 250px;
+  object-fit: cover;
+  margin-bottom: 5%;
+}
 
 #ProfileCardButton {
   margin: 3%;
@@ -149,21 +193,22 @@ a:hover {
 #navlinks {
   z-index: 9999;
   position: relative;
-  height: 50px;
   display: grid;
-  width: 50%;
-  font-size: 12px;
-  font-color: black;
-  padding-top: 1.25%;
+  width: 100%;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.1em;
+  font-color: #EEEEEE;
+  padding-top: 2%;
+  padding-bottom: 1%;
   padding-left: 2%;
   grid-template-columns:  repeat(6, 1fr);
+  background-color: #EEEEEE;
 
 }
 
 /* .navBar {
   width: 100%;
-  background-color: #eeeeee;
-
+  height: 130px;
 } */
 
 /* **************************NewsFeedTable **************************** */
@@ -173,10 +218,14 @@ a:hover {
   position: relative;
   margin-top: 25px;
   width: 95%;
+  font-family: 'Raleway', sans-serif;
 }
 
 #newsFeedLink {
-  color: blue
+  color: blue;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  font-size: 1.1em;
 }
 #newsFeedLink:hover {
   color: red
@@ -195,7 +244,7 @@ a:hover {
 
 /* **************************Borders **************************** */
 
-#RedBorder {
+/* #RedBorder {
   border-style: solid;
   border-color: red;
 }
@@ -203,19 +252,20 @@ a:hover {
 #Red {
   border-style: solid;
   border-color: red;
-}
+} */
 
-#Blue {
+/* #Blue {
   border-style: solid;
   border-color: blue;
-}
+} */
 
 /* **************************Gallery Cards **************************** */
 
 #GalleryCardsGrid {
-  border-style: solid;
-  border-color: blue;
-  padding: 5%;
+  /* border-style: solid;
+  border-color: blue; */
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 #GalleryCardAvatar {
@@ -310,9 +360,6 @@ a:hover {
   z-index: 0;
   margin-top: -50px;
   background-color: #142C44;
-  border-style: solid;
-  border-color: orange;
-
 }
 
 #AlbumHeaderColor {
@@ -346,8 +393,7 @@ a:hover {
 }
 
 #Album2ndModule {
-  border-style: solid;
-  border-color: blue;
+
 }
 
 #AlbumProfileCard {
@@ -394,6 +440,8 @@ a:hover {
   column-count:         4;
   column-gap:           15px;
   width: 100%;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 #photoGrid img {

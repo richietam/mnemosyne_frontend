@@ -45,16 +45,17 @@ body {
 
 .card__like {
     width: 18px;
+    color: #23305E;
 }
 
 .card__clock {
-    width: 15px;
+    width: 25px;
     vertical-align: middle;
-    fill: #AD7D52;
+    fill: #23305E;
 }
 .card__time {
-    font-size: 12px;
-    color: #AD7D52;
+    font-size: 14px;
+    color: #23305E;
     vertical-align: middle;
     margin-left: 5px;
 }
@@ -84,7 +85,7 @@ body {
 }
 
 .card__img--hover {
-  transition: 0.2s all ease-out;
+  transition: 0.3s all ease-out;
   object-fit: cover;
     /* background-size: cover;
     background-position: center;
@@ -99,13 +100,13 @@ top: 0;
 
 .card {
   transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
-  background-color: #fff;
+  background-color: #EEEEEE;
   width: 100%;
   height: auto;
   position: relative;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 2px 13px 13px -5px rgba(0, 0, 0,0.3);
+  box-shadow: 2px 13px 13px -5px rgba(0, 0, 0,0.2);
   /* border-style: solid;
   border-color: navy;
   border-width: thick; */
@@ -118,7 +119,7 @@ top: 0;
 
 .card__info {
   z-index: 2;
-  background-color: #fff;
+  background-color: #EEEEEE;
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
   padding: 16px 24px 24px 24px;
@@ -130,31 +131,34 @@ top: 0;
   font-size: 13px;
   letter-spacing: 2px;
   font-weight: 500;
-  color: #868686;
+  color: #23305E;
 }
 
 .card__title {
   margin-top: 5px;
   margin-bottom: 10px;
   font-family: 'Roboto Slab', serif;
+  color: #23305E;
 }
 
 .card__by {
   font-size: 12px;
   font-family: 'Raleway', sans-serif;
   font-weight: 500;
+  color: #23305E;
 }
 
 .card__author {
   font-weight: 600;
   text-decoration: none;
   color: #AD7D52;
+  font-size: 12px;
 }
 
 .card:hover .card__img--hover {
   height: 100%;
   object-fit: cover;
-  opacity: 0.3;
+  opacity: 0.2;
 }
 
 .card:hover .card__info {
@@ -174,7 +178,7 @@ top: 0;
 }
 
 
-@media (max-width: 1200px) {
+@media (max-width: 1800px) {
   .albumCards2 {
     grid-template-columns: repeat(4, 1fr);
   }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Icon, Image, Button } from 'semantic-ui-react'
+import { Card, Icon, Button } from 'semantic-ui-react'
 
 const ProfileCard = (props) => {
   const userID = parseInt(localStorage.getItem("user_id"))
@@ -11,7 +11,11 @@ const ProfileCard = (props) => {
 
   // console.log('in profile card', props)
   return  <Card id="ProfileCard">
-    <Image src={props.avatar} wrapped ui={false} />
+    <img
+      src={props.avatar}
+      alt="ProfileCardAvatar"
+      id="ProfileCardAvatar"
+    />
     <Card.Content>
       {userID === props.selectedUserID ? null :
       <Button

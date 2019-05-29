@@ -159,12 +159,16 @@ class Profile extends Component {
           width={16}
           id="GalleryCardsGrid"
         >
+          <div
+            className="ui divider"
+            id="Divider">
+          </div>
           <Header as='h2'>{first_name.charAt(0).toUpperCase() + first_name.slice(1) + "'s Albums:"}</Header>
           {
             this.props.current_user.id === id ?
               <div id="NewGalleryButton">
               <Link to ='/newalbum'>
-              <Button id="HomeButton" >
+              <Button id="Button" >
                 <Button.Content visible>+ New Gallery</Button.Content>
               </Button>
               </Link>

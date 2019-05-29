@@ -7,7 +7,7 @@ class Nav extends Component {
     if (!this.props.current_user) return null
 
     return (
-    <div className="navBar">
+    <div className="">
       <div className="navlinks" id="navlinks">
        <Link to='/home'>
          Home
@@ -16,17 +16,8 @@ class Nav extends Component {
        Profile
        </Link>
 
-       <Link to='/newuser'>
-         New User
-       </Link>
-
        <Link to='/newalbum'>
          New Album
-       </Link>
-
-
-       <Link to='/album'>
-         Album
        </Link>
 
        <Link to='/login'>
