@@ -2,30 +2,33 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
+const userID = localStorage.getItem("user_id")
 class Nav extends Component {
   render() {
     if (!this.props.current_user) return null
 
     return (
-    <div className="">
-      <div className="navlinks" id="navlinks">
-       <Link to='/home'>
-         Home
-       </Link>
-       <Link to={`/profile/${this.props.current_user.id}`}>
-       Profile
-       </Link>
 
-       <Link to='/newalbum'>
-         New Album
-       </Link>
+      <div className="navBar" id="navlinks">
 
-       <Link to='/login'>
-         Login
-       </Link>
+         <Link className="navLinks" to='/home'>
+           Home
+         </Link>
+         <Link className="navLinks" to={`/profile/${this.props.current_user.id}`}>
+         Profile
+         </Link>
+
+         <img className="logo" src="/logo_transparent.png"/>
+
+         <Link className="navLinks" to='/newalbum'>
+           New Album
+         </Link>
+         <Link className="navLinks" to='/login'>
+           {userID ? `Logout` : `Login`}
+         </Link>
 
       </div>
-    </div>
+
      )
   }
 }
