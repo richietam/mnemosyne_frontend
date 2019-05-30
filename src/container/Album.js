@@ -64,7 +64,7 @@ class Album extends Component {
   }
 
   render () {
-    console.log(this.props)
+    console.log('in album props are',this.props)
     if (!this.props.current_album) return null
     return (
       <div>
@@ -109,10 +109,10 @@ class Album extends Component {
         <Grid id="GalleryCardsGrid">
           <Grid.Column id="Gallery" width={16}>
           <div
-            class="ui divider"
+            className="ui divider"
             id="Divider">
           </div>
-            <Link to ='/albumedit'>
+            <Link to ={`/albumedit/${this.props.match.params.id}`}>
               <Button id="Button" >
                 <Button.Content visible>Edit Album</Button.Content>
               </Button>

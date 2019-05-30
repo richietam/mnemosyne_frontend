@@ -7,6 +7,8 @@ import AlbumProfileCard from '../component/AlbumProfileCard'
 import { Link } from 'react-router-dom'
 import { SET_CURRENT_ALBUM } from '../constants/ActionTypes'
 
+const userID = localStorage.getItem("user_id")
+
 class AlbumEdit extends Component {
 
   componentDidMount () {
@@ -45,7 +47,7 @@ class AlbumEdit extends Component {
   handleDeleteButton = (img) => {
     console.log("delete button is being clicked!", img.id )
 
-    fetch(`http://localhost:3000/api/albums`, {
+    fetch(`http://localhost:3000/api/image`, {
       method: 'DELETE',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({image_id: img.id})
@@ -54,9 +56,20 @@ class AlbumEdit extends Component {
     .then(album => this.props.setCurrentAlbum(album))
   }
 
+  handleDeleteAlbum = (albumID) => {
+    console.log("delete button is being clicked!", this.props.match.params.id)
+    fetch(`http://localhost:3000/api/album`, {
+      method: 'DELETE',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({album_id: albumID})
+    })
+    .then(res => res.json())
+    .then( res => this.props.history.push(`/profile/${userID}`))
+  }
+
 
   render () {
-    console.log(this.props)
+    console.log('in album edit', this.props)
     if (!this.props.current_album) return null
     return (
       <div>
@@ -90,6 +103,12 @@ class AlbumEdit extends Component {
                 <Button.Content visible>Save Edits</Button.Content>
               </Button>
             </Link>
+            <Button
+              id="editButton"
+              onClick={ () => this.handleDeleteAlbum(this.props.match.params.id)}
+            >
+              <Button.Content visible>Delete Album</Button.Content>
+            </Button>
             {this.renderGalleryImages()}
           </Grid.Column>
         </Grid>

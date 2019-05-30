@@ -4,78 +4,28 @@ import { connect } from 'react-redux'
 import { SET_CURRENT_ALBUM } from '../constants/ActionTypes'
 import '../styles/GalleryCard.css'
 
-const extra = (
-  <div>
-    <img
-      alt= ""
-      id="GalleryCardAvatar"
-      src="https://react.semantic-ui.com/images/avatar/small/molly.png"
-    />
-    M + 2 Friends created Album Name
-  </div>
-)
 
-class GalleryCards extends Component {
+class WelcomePageGalleryCards extends Component {
 
   state = {
     redirect: false
   }
 
   componentDidMount () {
-    const album_id = localStorage.getItem("album_id")
-
-    if (album_id) {
-      fetch('http://localhost:3000/api/current_album', {
-        headers: {
-          "Authorization": album_id
-        }
-      })
-      .then(res => res.json() )
-      .then( album => this.props.setCurrentAlbum(album) )
-    }
-  }
-  renderAlbumCard = () => {
-
-    return this.props.albums.map( (album) => {
-      return <Card
-      color='orange'
-      key={album.id}
-      id={album.id}
-      extra={extra}
-      image={album.images[0].image_url}
-      onClick={ () => this.handleAlbumClick(album) }
-      fluid
-      />
-    }
-  )
+    // const album_id = localStorage.getItem("album_id")
+    //
+    // if (album_id) {
+    //   fetch('http://localhost:3000/api/current_album', {
+    //     headers: {
+    //       "Authorization": album_id
+    //     }
+    //   })
+    //   .then(res => res.json() )
+    //   .then( album => this.props.setCurrentAlbum(album) )
+    // }
   }
 
-  renderAlbumCard2 = () => {
 
-    return this.props.albums.map( (album) => {
-      return <div
-        className="albumCard"
-        onClick={ () => this.handleAlbumClick(album) }
-        key={album.id}
-        >
-          <img
-            alt=""
-            src={album.images[0].image_url}
-            key={album.id}
-            id="albumPreviewImage"
-            onClick={ () => this.handleAlbumClick(album) }
-          />
-          <img
-            alt=""
-            id="GalleryCardAvatar"
-            src={this.props.selected_user.avatar}
-          />
-          {`${this.props.selected_user.username} + 2 friends created Album Name`}
-      </div>
-
-    }
-  )
-  }
 
   renderAlbumCard3 = () => {
 
@@ -111,7 +61,7 @@ class GalleryCards extends Component {
       <div className="card__info">
         <span className="card__category">{album.name}</span>
         <h3 className="card__title">Lorem ipsum dimsum</h3>
-        <span className="card__by">by <a href="google.com" className="card__author" title="author">{this.props.selected_user.username} + 2 friends</a></span>
+        <span className="card__by">by <a href="google.com" className="card__author" title="author">Richie + 2 friends</a></span>
       </div>
 </article>
 
@@ -119,7 +69,6 @@ class GalleryCards extends Component {
     }
   )
   }
-
 
 
   handleAlbumClick = (album) => {
@@ -133,7 +82,6 @@ class GalleryCards extends Component {
 
   render() {
     // console.log('in gallerycard, current props are', this.props)
-    if(!this.props.albums) return null
     return(
         <div>
         <div className="albumCards2">
@@ -165,4 +113,4 @@ function mapDispatchToProps (dispatch) {
 // }
 
 
-export default connect(mapStateToProps, mapDispatchToProps) (GalleryCards)
+export default connect(mapStateToProps, mapDispatchToProps) (WelcomePageGalleryCards)
