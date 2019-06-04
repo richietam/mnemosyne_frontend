@@ -13,6 +13,7 @@ import Album from './container/Album'
 import AlbumEdit from './container/AlbumEdit'
 import { SET_USERS } from './constants/ActionTypes'
 import { SET_CURRENT_USER } from './constants/ActionTypes'
+import { API_URL } from './constants/ActionTypes'
 
 class App extends Component {
 
