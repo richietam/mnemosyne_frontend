@@ -8,7 +8,6 @@ class Nav extends Component {
     if (!this.props.current_user) return null
 
     return (
-
       <div className="navBar" id="navlinks">
 
          <Link className="navLinks" to='/home'>

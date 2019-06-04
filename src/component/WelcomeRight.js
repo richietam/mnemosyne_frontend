@@ -6,9 +6,9 @@ class WelcomeRight extends Component {
   render () {
     return (
       <div className="WelcomeRight">
-        <Header size='huge' id="WelcomeRightH1">PROJECT MNEMOSYNE</Header>
+        <Header size='huge' id="WelcomeRightH1">Collaborate on Pixs</Header>
         <p id="WelcomeRightP">
-          Beautiful user created photo albums designed for friends, family, and strangers to curate their best photos online.
+           Beautiful user created photo albums. Designed for friends, family, and strangers to curate their best photos online.
         </p>
         <Link to ='/newuser'>
         <Button id="HomeButton" >
