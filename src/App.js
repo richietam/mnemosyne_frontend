@@ -21,7 +21,7 @@ class App extends Component {
     const userID = localStorage.getItem("user_id")
 
     if(userID){
-      fetch('http://localhost:3000/api/auto_login', {
+      fetch(`${API_URL}/auto_login`, {
         headers: {
           "Authorization": userID
         }
