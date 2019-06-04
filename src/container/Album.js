@@ -74,17 +74,17 @@ class Album extends Component {
               <img src={this.props.current_album.images[0].image_url} alt=""/>
             </div>
             <div id="MainAlbumH1">
-            <Header size='huge' id="AlbumHeaderColor">LOREM IPSUM DIMSUM</Header>
+            <Header size='huge' id="AlbumHeaderColor">{this.props.current_album.name.toUpperCase()}</Header>
             </div>
             <div id="MainAlbumH2">
-            <Header size='huge' id="AlbumHeaderColor">LOREM IPSUM DIMSUM</Header>
+            <Header size='huge' id="AlbumHeaderColor">May 30th, 2019</Header>
             </div>
           </Grid.Column>
         </Grid>
 
         <Grid id="Album2ndModule">
           <Grid.Column
-            width={8}
+            width={10}
             id="Red"
           >
             <Header size='huge' id="AlbumCardsGroup">Album Creators:</Header>
@@ -96,11 +96,11 @@ class Album extends Component {
 
           </Grid.Column>
           <Grid.Column
-            width={8}
-            id="Blue"
+            width={6}
+            id="albumRightContainer"
           >
-          <Header as='h3'>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          <Header as='h3' id="albumRightContainerText">
+            Wonderful album description goes here. Lorem Ipsum Dimsum because I ran out of time to update this but I will revisit this code later on oh god are you still reading I am running out of things to say anyways hope you like this project pls hire me.
           </Header>
           </Grid.Column>
 

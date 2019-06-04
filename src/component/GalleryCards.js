@@ -4,6 +4,9 @@ import { connect } from 'react-redux'
 import { SET_CURRENT_ALBUM } from '../constants/ActionTypes'
 import '../styles/GalleryCard.css'
 
+const DEV_URL = "https://copixa-api.herokuapp.com"
+const PROD_URL = "http://localhost:3000"
+
 const extra = (
   <div>
     <img
@@ -110,7 +113,7 @@ class GalleryCards extends Component {
 
       <div className="card__info">
         <span className="card__category">{album.name}</span>
-        <h3 className="card__title">Lorem ipsum dimsum</h3>
+        <h3 className="card__title"></h3>
         <span className="card__by">by <a href="google.com" className="card__author" title="author">{this.props.selected_user.username} + 2 friends</a></span>
       </div>
 </article>

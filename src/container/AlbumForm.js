@@ -45,7 +45,7 @@ class AlbumForm extends Component {
     .then( res => res.json() )
     .then( response => {
       console.log(response)
-      this.props.history.push('/profile')
+      this.props.history.push(`/profile/${this.props.current_user.id}`)
     })
     }
   }

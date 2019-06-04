@@ -23,7 +23,7 @@ a:hover {
 }
 
 .logo{
-  height:70px;
+  height:100px;
   width: auto;
   margin-left: 15%;
 }
@@ -229,7 +229,7 @@ body{
 }
 
 .navLinks{
-  margin-top: 45px;
+  margin-top: 75px;
 }
 
 /* .leftofNav {
@@ -425,6 +425,7 @@ body{
 
 #AlbumHeaderColor {
   color: #eeeeee;
+  font-family: 'Raleway', sans-serif;
 }
 
 #MainAlbumImage {
@@ -434,6 +435,7 @@ body{
   top: -17px;
   margin-left: 25%;
   width: 55%;
+  height: auto;
 
   /* border-style: solid;
   border-color: red; */
@@ -441,16 +443,35 @@ body{
 
 #MainAlbumH1 {
   position: absolute;
+  font-family: 'Raleway', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 6px;
   margin-top: -22%;
   margin-left: 15%;
-  font-size: 3em;
+  font-size: 3.5em;
 }
 
 #MainAlbumH2 {
   position: absolute;
-  margin-top: -15%;
-  margin-left: 19%;
-  font-size: 2em;
+  font-family: 'Raleway', sans-serif;
+  margin-top: -13%;
+  margin-left: 15%;
+  font-size: 1.3em;
+}
+
+#albumRightContainer{
+  padding-right: 12%;
+  margin-left: -7%;
+  padding-top: 10%;
+}
+
+#albumRightContainerText {
+  #font-family: 'Raleway', sans-serif;
+  color: #23305E;
+  font-weight: 300;
+  font-size: 1.5em;
+  line-height: 1.5em;
+
 }
 
 #Album2ndModule {

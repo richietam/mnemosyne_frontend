@@ -3,14 +3,14 @@ import { Card, Icon, Image, Button } from 'semantic-ui-react'
 
 const AlbumProfileCard = () => (
   <Card id="AlbumProfileCard" fluid>
-    <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} />
+    <Image src='http://localhost:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d2d71aee66296d9acaa6e211be7314db4d773091/richietam3.png' wrapped ui={false} />
     <Card.Content>
       <Button
         id="AlbumCard"
       >
         View Profile
       </Button>
-      <Card.Header id="AlbumCard" >Matthew</Card.Header>
+      <Card.Header id="AlbumCard" >Rich</Card.Header>
     </Card.Content>
     <Card.Content extra>
       <a href="google.com" id="AlbumCard">
