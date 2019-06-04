@@ -2,10 +2,9 @@ import React, { Component } from 'react'
 import { Card } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { SET_CURRENT_ALBUM } from '../constants/ActionTypes'
+import { SET_SELECTED_USER } from '../constants/ActionTypes'
+import { API_URL } from '../constants/ActionTypes'
 import '../styles/GalleryCard.css'
-
-const DEV_URL = "https://copixa-api.herokuapp.com"
-const PROD_URL = "http://localhost:3000"
 
 const extra = (
   <div>
@@ -28,7 +27,7 @@ class GalleryCards extends Component {
     const album_id = localStorage.getItem("album_id")
 
     if (album_id) {
-      fetch('http://localhost:3000/api/current_album', {
+      fetch(`${API_URL}/current_album`, {
         headers: {
           "Authorization": album_id
         }

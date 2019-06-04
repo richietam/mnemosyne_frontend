@@ -6,6 +6,7 @@ import AlbumProfileCard from '../component/AlbumProfileCard'
 // import AlbumGallery from './AlbumGallery'
 import { Link } from 'react-router-dom'
 import { SET_CURRENT_ALBUM } from '../constants/ActionTypes'
+import { API_URL } from '../constants/ActionTypes'
 
 const userID = localStorage.getItem("user_id")
 
@@ -14,7 +15,7 @@ class AlbumEdit extends Component {
   componentDidMount () {
     const album_id = localStorage.getItem("album_id")
     if (album_id) {
-      fetch('http://localhost:3000/api/current_album', {
+      fetch(`${API_URL}/current_album`, {
         headers: {
           "Authorization": album_id
         }
@@ -47,7 +48,7 @@ class AlbumEdit extends Component {
   handleDeleteButton = (img) => {
     console.log("delete button is being clicked!", img.id )
 
-    fetch(`http://localhost:3000/api/image`, {
+    fetch(`${API_URL}/image`, {
       method: 'DELETE',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({image_id: img.id})
@@ -58,7 +59,7 @@ class AlbumEdit extends Component {
 
   handleDeleteAlbum = (albumID) => {
     console.log("delete button is being clicked!", this.props.match.params.id)
-    fetch(`http://localhost:3000/api/album`, {
+    fetch(`${API_URL}/album`, {
       method: 'DELETE',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({album_id: albumID})
