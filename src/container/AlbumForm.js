@@ -3,7 +3,7 @@ import { Button, Form, Icon, Header, Grid } from 'semantic-ui-react'
 import Dropzone from 'react-dropzone'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
-// import PreviewGalleryCards from '../component/PreviewGalleryCards'
+import { API_URL } from '../constants/ActionTypes'
 
 class AlbumForm extends Component {
 
@@ -38,7 +38,7 @@ class AlbumForm extends Component {
       formData.append('images[]', file, file.name)
     }
 
-    fetch('http://localhost:3000/api/albums', {
+    fetch(`${API_URL}/albums`, {
       method: 'POST',
       body: formData
       })
@@ -73,11 +73,10 @@ class AlbumForm extends Component {
 
   renderUploadPreview = () => {
     return this.state.files.map( (file, index) => {
-      return <div>
+      return <div key={index}>
         <img
           id="imagePreview"
           alt="file preview"
-          key={index}
           src={URL.createObjectURL(file)}
           onClick={() => this.handlePreviewClick(index)}
         />

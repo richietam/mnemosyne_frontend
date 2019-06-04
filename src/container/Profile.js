@@ -8,13 +8,14 @@ import ProfileCard from '../component/ProfileCard'
 import GalleryCards from '../component/GalleryCards'
 import { SET_CURRENT_USER } from '../constants/ActionTypes'
 import { SET_SELECTED_USER } from '../constants/ActionTypes'
+import { API_URL } from '../constants/ActionTypes'
 
 class Profile extends Component {
 
   componentDidMount () {
     // console.log('in component did mount')
     const SelectedUserID = this.props.match.params.user_id
-      fetch('http://localhost:3000/api/auto_login', {
+      fetch(`${API_URL}/auto_login`, {
         headers: {
           "Authorization": SelectedUserID
         }
@@ -27,7 +28,7 @@ class Profile extends Component {
     // console.log('in shoudlcomponentupdate', nextProps.match.params.user_id, this.props.match.params.user_id)
     if (nextProps.match.params.user_id !== this.props.match.params.user_id) {
     const SelectedUserID = nextProps.match.params.user_id
-      fetch('http://localhost:3000/api/auto_login', {
+      fetch(`${API_URL}/auto_login`, {
         headers: {
           "Authorization": SelectedUserID
         }
@@ -39,7 +40,7 @@ class Profile extends Component {
   }
 
   handleFollow = (currentUser, selectedUser) => {
-    fetch('http://localhost:3000/api/follow', {
+    fetch(`${API_URL}/follow`, {
       method: 'POST',
       body: JSON.stringify({
         user_id: currentUser,
@@ -61,7 +62,7 @@ class Profile extends Component {
   }
 
   handleUnfollow = (currentUser, selectedUser) => {
-    fetch('http://localhost:3000/api/follow', {
+    fetch(`${API_URL}/follow`, {
       method: 'DELETE',
       body: JSON.stringify({
         user_id: currentUser,
@@ -107,6 +108,7 @@ class Profile extends Component {
   render () {
     console.log(this.props)
     if (!this.props.current_user || !this.props.selected_user) return null
+
     const { avatar, username, first_name, last_name, id, followings, followers, photosUploaded } = this.props.selected_user
 
     return (

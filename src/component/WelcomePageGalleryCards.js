@@ -25,9 +25,8 @@ class WelcomePageGalleryCards extends Component {
     // }
   }
 
-
-
   renderAlbumCard3 = () => {
+    if(!this.props.albums) return null
 
     return this.props.albums.map( (album) => {
       return <section key={album.id} onClick={ () => this.handleAlbumClick(album) } className="galleryCard">

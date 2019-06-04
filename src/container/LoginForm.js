@@ -3,6 +3,7 @@ import { Button, Form, Header } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
 import { SET_CURRENT_USER } from '../constants/ActionTypes'
+import { API_URL } from '../constants/ActionTypes'
 
 class LoginForm extends Component {
 
@@ -20,7 +21,7 @@ class LoginForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
 
-    fetch("http://localhost:3000/api/login", {
+    fetch(`${API_URL}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

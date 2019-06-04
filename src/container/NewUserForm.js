@@ -4,6 +4,7 @@ import Dropzone from 'react-dropzone'
 import { connect } from 'react-redux'
 // import { Redirect } from 'react-router'
 import { SET_CURRENT_USER } from '../constants/ActionTypes'
+import { API_URL } from '../constants/ActionTypes'
 
 // import SubmitButton from '../component/SubmitButton'
 
@@ -38,7 +39,7 @@ class NewUserForm extends Component {
     formData.append('avatar', this.state.file)
     formData.append('password', this.state.password)
 
-    fetch('http://localhost:3000/api/users', {
+    fetch(`${API_URL}/users`, {
       method: 'POST',
       body: formData
       })
@@ -61,7 +62,7 @@ class NewUserForm extends Component {
   }
 
   componentDidMount () {
-    fetch('http://localhost:3000/api/users')
+    fetch(`${API_URL}/users`)
     .then( res => res.json())
     .then( users => {
       this.setState({
