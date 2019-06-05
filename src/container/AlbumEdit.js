@@ -65,7 +65,11 @@ class AlbumEdit extends Component {
       body: JSON.stringify({album_id: albumID})
     })
     .then(res => res.json())
-    .then( res => this.props.history.push(`/profile/${userID}`))
+    .then( res => {
+      localStorage.removeItem("album_id")
+      this.props.history.push(`/profile/${userID}`)
+    })
+
   }
 
 
