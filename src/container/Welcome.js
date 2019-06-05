@@ -29,9 +29,6 @@ class Welcome extends Component {
           </span>
         </div>
         <div className="welcomePageContainer">
-        <WelcomePageGalleryCards
-          albums={this.props.albums.albums}
-        />
         <Divider id="homedivider" />
         </div>
         <div className="welcomeTextContainer">
