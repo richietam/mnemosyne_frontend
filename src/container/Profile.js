@@ -107,7 +107,7 @@ class Profile extends Component {
 
   render () {
     console.log(this.props)
-    if (!this.props.current_user && !this.props.selected_user) return null
+    if (!this.props.current_user || !this.props.selected_user) return null
 
     const { avatar, username, first_name, last_name, id, followings, followers, photosUploaded } = this.props.selected_user
 
