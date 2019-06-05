@@ -48,6 +48,7 @@ class NewUserForm extends Component {
       if (response.errors) {
         alert(response.errors)
       } else {
+          console.log('after the fetch', response)
           this.props.setCurrentUser(response)
           localStorage.setItem("user_id", response.id)
           this.props.history.push('/profile')
@@ -61,15 +62,15 @@ class NewUserForm extends Component {
     })
   }
 
-  componentDidMount () {
-    fetch(`${API_URL}/users`)
-    .then( res => res.json())
-    .then( users => {
-      this.setState({
-        users: users
-      })
-    })
-  }
+  // componentDidMount () {
+  //   fetch(`${API_URL}/users`)
+  //   .then( res => res.json())
+  //   .then( users => {
+  //     this.setState({
+  //       users: users
+  //     })
+  //   })
+  // }
 
   render () {
    console.log(this.props)
