@@ -8,7 +8,7 @@ import WelcomePageGalleryCards from '../component/WelcomePageGalleryCards'
 class Welcome extends Component {
 
   render () {
-    if(!this.props.albums) return null
+  
     console.log('in welcome component', this.props)
     return (
       <div>
@@ -37,9 +37,6 @@ class Welcome extends Component {
           </span>
         </div>
         <div className="welcomePageContainer">
-        <WelcomePageGalleryCards
-          albums={this.props.albums.albums}
-        />
         </div>
       </div>
     )
