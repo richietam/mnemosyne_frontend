@@ -100,6 +100,7 @@ class NewUserForm extends Component {
             <input
               id="inputField"
               placeholder='Password'
+              type="password"
               onChange={this.handleChange}
               value={this.state.password}
               name="password"
