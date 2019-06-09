@@ -86,7 +86,6 @@ class AlbumForm extends Component {
   }
 
   render () {
-
     if (!this.props.current_user) return null
     console.log('AlbumForm redux state', this.state.files)
 

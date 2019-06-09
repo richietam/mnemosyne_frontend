@@ -2,11 +2,9 @@ import React, { Component, Fragment } from 'react'
 import { Button, Checkbox, Form, Icon, Header } from 'semantic-ui-react'
 import Dropzone from 'react-dropzone'
 import { connect } from 'react-redux'
-// import { Redirect } from 'react-router'
 import { SET_CURRENT_USER } from '../constants/ActionTypes'
 import { API_URL } from '../constants/ActionTypes'
 
-// import SubmitButton from '../component/SubmitButton'
 
 class NewUserForm extends Component {
 
@@ -48,6 +46,7 @@ class NewUserForm extends Component {
       if (response.errors) {
         alert(response.errors)
       } else {
+          console.log('after the fetch', response)
           this.props.setCurrentUser(response)
           localStorage.setItem("user_id", response.id)
           this.props.history.push('/profile')
@@ -61,18 +60,17 @@ class NewUserForm extends Component {
     })
   }
 
-  componentDidMount () {
-    fetch(`${API_URL}/users`)
-    .then( res => res.json())
-    .then( users => {
-      this.setState({
-        users: users
-      })
-    })
-  }
+  // componentDidMount () {
+  //   fetch(`${API_URL}/users`)
+  //   .then( res => res.json())
+  //   .then( users => {
+  //     this.setState({
+  //       users: users
+  //     })
+  //   })
+  // }
 
   render () {
-   console.log(this.props)
     return (
       <Fragment>
         <Form id="form">
@@ -102,6 +100,7 @@ class NewUserForm extends Component {
             <input
               id="inputField"
               placeholder='Password'
+              type="password"
               onChange={this.handleChange}
               value={this.state.password}
               name="password"
