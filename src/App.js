@@ -18,9 +18,7 @@ import { API_URL } from './constants/ActionTypes'
 class App extends Component {
 
   componentDidMount () {
-
     const userID = localStorage.getItem("user_id")
-
     if(userID){
       fetch(`${API_URL}/auto_login`, {
         headers: {
