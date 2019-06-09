@@ -1,10 +1,17 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { SET_CURRENT_USER } from '../constants/ActionTypes'
 
 const userID = localStorage.getItem("user_id")
 
 class Nav extends Component {
+
+  handleLogOut = ()=> {
+    localStorage.removeItem("user_id")
+    this.props.setCurrentUser(null)
+  }
+
 
   render() {
     return (
@@ -24,8 +31,9 @@ class Nav extends Component {
              <Link className="navLinks" to='/newalbum'>
                New Album
              </Link>
-             <Link className="navLinks" to='/login'>
-               {userID ? `Logout` : `Login`}
+             <Link
+              className="navLinks" to='/logout' onClick={this.handleLogOut}>
+              Logout
              </Link>
           </div>
           :
@@ -39,12 +47,12 @@ class Nav extends Component {
              <img className="logo" src="/logo_transparent.png"/>
 
              <Link className="navLinks" to='/login'>
-              {userID ? `Logout` : `Login`}
+              Login
              </Link>
              <Link className="navLinks" to='/login'>
 
              </Link>
-          </div>          
+          </div>
         }
 
 
@@ -59,5 +67,17 @@ function mapStateToProps (state) {
   }
 }
 
+function mapDispatchToProps (dispatch) {
+  return {
+    setCurrentUser: (user) => {
+      dispatch({
+        type: SET_CURRENT_USER,
+        payload: user
+      })
+    }
+  }
+}
 
-export default connect(mapStateToProps) (Nav)
+
+
+export default connect(mapStateToProps, mapDispatchToProps) (Nav)
