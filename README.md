@@ -2,6 +2,8 @@
 
 Like Instagram but focused on a collection of images in albums. 
 
+Photographs should be viewed in fullscreen glory! A web app that allows users to create and share beautiful photo albums.
+
 ## Live Project: 
 http://copixa.herokuapp.com
 
