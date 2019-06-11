@@ -3,12 +3,11 @@ import { Grid, Divider } from 'semantic-ui-react'
 import WelcomeLeft from '../component/WelcomeLeft'
 import WelcomeRight from '../component/WelcomeRight'
 import { connect } from 'react-redux'
-import WelcomePageGalleryCards from '../component/WelcomePageGalleryCards'
 
 class Welcome extends Component {
 
   render () {
-  
+
     console.log('in welcome component', this.props)
     return (
       <div>

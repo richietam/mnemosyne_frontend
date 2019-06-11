@@ -65,7 +65,6 @@ class Album extends Component {
   }
 
   render () {
-    console.log('in album props are',this.props)
     if (!this.props.current_album) return null
     return (
       <div>
@@ -88,11 +87,9 @@ class Album extends Component {
             width={10}
             id="Red"
           >
-            <Header size='huge' id="AlbumCardsGroup">Album Creators:</Header>
-            <Card.Group itemsPerRow={3} id="AlbumCardsGroup">
-            <AlbumProfileCard fluid/>
-            <AlbumProfileCard  fluid/>
-            <AlbumProfileCard fluid/>
+            <Header size='huge' id="AlbumCardsGroup">Album Creator:</Header>
+            <Card.Group itemsPerRow={1} id="AlbumCardsGroup">
+            <AlbumProfileCard albumCreator={this.props.current_album.user} fluid/>
             </Card.Group>
 
           </Grid.Column>
@@ -101,7 +98,7 @@ class Album extends Component {
             id="albumRightContainer"
           >
           <Header as='h3' id="albumRightContainerText">
-            Wonderful album description goes here. Lorem Ipsum Dimsum because I ran out of time to update this but I will revisit this code later on oh god are you still reading I am running out of things to say anyways hope you like this project pls hire me.
+            Album description placeholder. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse.
           </Header>
           </Grid.Column>
 

@@ -13,7 +13,6 @@ import { API_URL } from '../constants/ActionTypes'
 class Profile extends Component {
 
   componentDidMount () {
-    // console.log('in component did mount')
     const SelectedUserID = this.props.match.params.user_id
       fetch(`${API_URL}/auto_login`, {
         headers: {
@@ -25,7 +24,6 @@ class Profile extends Component {
   }
 
   shouldComponentUpdate (nextProps) {
-    // console.log('in shoudlcomponentupdate', nextProps.match.params.user_id, this.props.match.params.user_id)
     if (nextProps.match.params.user_id !== this.props.match.params.user_id) {
     const SelectedUserID = nextProps.match.params.user_id
       fetch(`${API_URL}/auto_login`, {
@@ -55,7 +53,6 @@ class Profile extends Component {
       if (response.error) {
         alert("u alredy fullowin dis")
       } else {
-        console.log('follow', response)
         this.props.setCurrentUser(response)
       }
     })
@@ -74,13 +71,11 @@ class Profile extends Component {
     })
     .then(res => res.json())
     .then(response=> {
-      console.log('unfollow', response)
       this.props.setCurrentUser(response)
     })
   }
 
    checkFollowStatus = (currentUser, selectedUser) => {
-    //user is on their own profile page, follow/unfollow button will not render
     if (!this.props.current_user) return null
 
     const currentUser_followed_ids = this.props.current_user.followed_users.map(user => user.id)
@@ -93,7 +88,6 @@ class Profile extends Component {
   }
 
    profileCardButtonText = () => {
-    //user is on their own profile page, follow/unfollow button will not render
     if (!this.props.current_user) return null
 
     const currentUser_followed_ids = this.props.current_user.followed_users.map(user => user.id)
@@ -106,14 +100,11 @@ class Profile extends Component {
   }
 
   render () {
-    console.log(this.props)
     if (!this.props.current_user || !this.props.selected_user) return null
-
 
     const { avatar, username, first_name, last_name, id, followings, followers, photosUploaded } = this.props.selected_user
 
     return (
-
       <div id="profile">
       <Grid>
         <Grid.Column width={16}>
@@ -209,8 +200,6 @@ function mapDispatchToProps (dispatch) {
     }
   }
 }
-
-// const mapStateToProps = ({ users: {current_user} } ) => ({ current_user })
 
 function mapStateToProps (state) {
   return {
