@@ -3,8 +3,6 @@ import { Card, Feed } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 const NewsFeed = (props) => {
-  console.log('in newsfeed', props)
-
   const renderEvents = () => {
     return props.newsFeed.map( event => {
 

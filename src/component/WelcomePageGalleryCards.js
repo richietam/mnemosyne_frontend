@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Card } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { SET_CURRENT_ALBUM } from '../constants/ActionTypes'
 import '../styles/GalleryCard.css'

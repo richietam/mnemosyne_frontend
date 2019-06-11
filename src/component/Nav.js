@@ -3,15 +3,12 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { SET_CURRENT_USER } from '../constants/ActionTypes'
 
-const userID = localStorage.getItem("user_id")
-
 class Nav extends Component {
 
   handleLogOut = ()=> {
     localStorage.removeItem("user_id")
     this.props.setCurrentUser(null)
   }
-
 
   render() {
     return (
@@ -26,7 +23,7 @@ class Nav extends Component {
              Profile
              </Link>
 
-             <img className="logo" src="/logo_transparent.png"/>
+             <img className="logo" src="/logo_transparent.png" alt="Logo"/>
 
              <Link className="navLinks" to='/newalbum'>
                New Album
@@ -38,19 +35,15 @@ class Nav extends Component {
           </div>
           :
           <div className="navBar" id="navlinks">
-             <Link className="navLinks" to='/home'>
-
-             </Link>
+             <Link className="navLinks" to='/home'></Link>
              <Link className="navLinks" to='/home'>
                Home
              </Link>
-             <img className="logo" src="/logo_transparent.png"/>
-
+             <img className="logo" src="/logo_transparent.png" alt="Logo"/>
              <Link className="navLinks" to='/login'>
               Login
              </Link>
              <Link className="navLinks" to='/login'>
-
              </Link>
           </div>
         }

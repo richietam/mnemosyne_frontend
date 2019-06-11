@@ -64,7 +64,6 @@ class AlbumForm extends Component {
   }
 
   handlePreviewClick = (index) => {
-    console.log('preview image being clicked', index)
     this.state.files.splice(index, 1)
     this.setState({
       files: this.state.files
@@ -87,8 +86,6 @@ class AlbumForm extends Component {
 
   render () {
     if (!this.props.current_user) return null
-    console.log('AlbumForm redux state', this.state.files)
-
     if (this.state.redirect) {
      return <Redirect to='/profile'/>;
    }
@@ -132,9 +129,6 @@ class AlbumForm extends Component {
               </Dropzone>
 
             </Form>
-
-            {/*this.state.files.length > 0 ? <div><img src={file.preview}/></div> : null*/}
-
           </Grid.Column>
         </Grid>
           {
@@ -143,8 +137,6 @@ class AlbumForm extends Component {
              :
               null
            }
-
-
         <Button
           type='submit'
           id="NewGalleryFormButton"
@@ -158,11 +150,5 @@ class AlbumForm extends Component {
 }
 
 const mapStateToProps = ({ users: {current_user} } ) => ({ current_user })
-
-// function mapStateToProps (state) {
-//   return {
-//     users: state.users
-//   }
-// }
 
 export default connect(mapStateToProps) (AlbumForm)

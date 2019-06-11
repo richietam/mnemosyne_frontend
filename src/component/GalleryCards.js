@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Card } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { SET_CURRENT_ALBUM } from '../constants/ActionTypes'
-import { SET_SELECTED_USER } from '../constants/ActionTypes'
 import { API_URL } from '../constants/ActionTypes'
 import '../styles/GalleryCard.css'
 
@@ -112,7 +111,7 @@ class GalleryCards extends Component {
 
       <div className="card__info">
         <span className="card__category">{album.name}</span>
-        <h3 className="card__title"></h3>
+        <h3 className="card__title"> </h3>
         <span className="card__by">by <a href="google.com" className="card__author" title="author">{this.props.selected_user.username} + 2 friends</a></span>
       </div>
 </article>
@@ -125,11 +124,9 @@ class GalleryCards extends Component {
 
 
   handleAlbumClick = (album) => {
-
     this.props.setCurrentAlbum(album)
     localStorage.setItem("album_id", album.id)
     this.props.routeProps.push(`/album/${album.id}`)
-    console.log("i am being clicked!", album)
   }
 
 

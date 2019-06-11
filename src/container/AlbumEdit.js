@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { Header, Grid, Card, Image, Button, Divider } from 'semantic-ui-react'
+import { Grid, Card, Image, Button, Divider } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 // import { Redirect } from 'react-router'
-import AlbumProfileCard from '../component/AlbumProfileCard'
+// import AlbumProfileCard from '../component/AlbumProfileCard'
 // import AlbumGallery from './AlbumGallery'
 import { Link } from 'react-router-dom'
 import { SET_CURRENT_ALBUM } from '../constants/ActionTypes'
@@ -58,7 +58,6 @@ class AlbumEdit extends Component {
   }
 
   handleDeleteAlbum = (albumID) => {
-    console.log("delete button is being clicked!", this.props.match.params.id)
     fetch(`${API_URL}/album`, {
       method: 'DELETE',
       headers: {'Content-Type': 'application/json'},
@@ -69,12 +68,10 @@ class AlbumEdit extends Component {
       localStorage.removeItem("album_id")
       this.props.history.push(`/profile/${userID}`)
     })
-
   }
 
 
   render () {
-    console.log('in album edit', this.props)
     if (!this.props.current_album) return null
     return (
       <div>
@@ -83,11 +80,7 @@ class AlbumEdit extends Component {
             width={8}
             id="Red"
           >
-            <Header size='huge' id="AlbumCardsGroup">Album Creators:</Header>
             <Card.Group itemsPerRow={3} id="AlbumCardsGroup">
-            <AlbumProfileCard fluid/>
-            <AlbumProfileCard  fluid/>
-            <AlbumProfileCard fluid/>
             </Card.Group>
 
           </Grid.Column>
@@ -95,9 +88,7 @@ class AlbumEdit extends Component {
             width={8}
             id="Blue"
           >
-          <Header as='h3'>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </Header>
+
           </Grid.Column>
         </Grid>
 
