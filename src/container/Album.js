@@ -36,20 +36,6 @@ class Album extends Component {
     })
   }
 
-  componentDidMount () {
-    const album_id = localStorage.getItem("album_id")
-
-    if (album_id) {
-      fetch(`${API_URL}/current_album`, {
-        headers: {
-          "Authorization": album_id
-        }
-      })
-      .then(res => res.json() )
-      .then( album => this.props.setCurrentAlbum(album) )
-    }
-  }
-
   handleImageClick = (url) => {
     this.setState({
       open: true,
@@ -63,6 +49,18 @@ class Album extends Component {
       open: false
     })
   }
+
+  componentDidMount () {
+    console.log('in album componentDidMount match params is', this.props.match.params.id)
+    fetch(`${API_URL}/current_album`, {
+      headers: {
+        "Authorization": this.props.match.params.id
+      }
+    })
+    .then( res => res.json() )
+    .then( album => this.props.setCurrentAlbum(album) )
+  }
+
 
   render () {
     if (!this.props.current_album) return null

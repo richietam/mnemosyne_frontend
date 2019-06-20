@@ -18,67 +18,7 @@ const extra = (
 
 class GalleryCards extends Component {
 
-  state = {
-    redirect: false
-  }
-
-  componentDidMount () {
-    const album_id = localStorage.getItem("album_id")
-
-    if (album_id) {
-      fetch(`${API_URL}/current_album`, {
-        headers: {
-          "Authorization": album_id
-        }
-      })
-      .then(res => res.json() )
-      .then( album => this.props.setCurrentAlbum(album) )
-    }
-  }
-  renderAlbumCard = () => {
-
-    return this.props.albums.map( (album) => {
-      return <Card
-      color='orange'
-      key={album.id}
-      id={album.id}
-      extra={extra}
-      image={album.images[0].image_url}
-      onClick={ () => this.handleAlbumClick(album) }
-      fluid
-      />
-    }
-  )
-  }
-
-  renderAlbumCard2 = () => {
-
-    return this.props.albums.map( (album) => {
-      return <div
-        className="albumCard"
-        onClick={ () => this.handleAlbumClick(album) }
-        key={album.id}
-        >
-          <img
-            alt=""
-            src={album.images[0].image_url}
-            key={album.id}
-            id="albumPreviewImage"
-            onClick={ () => this.handleAlbumClick(album) }
-          />
-          <img
-            alt=""
-            id="GalleryCardAvatar"
-            src={this.props.selected_user.avatar}
-          />
-          {`${this.props.selected_user.username} + 2 friends created Album Name`}
-      </div>
-
-    }
-  )
-  }
-
-  renderAlbumCard3 = () => {
+  renderAlbumCards = () => {
 
     return this.props.albums.map( (album) => {
       return <section key={album.id} onClick={ () => this.handleAlbumClick(album) } className="galleryCard">
@@ -121,11 +61,8 @@ class GalleryCards extends Component {
   )
   }
 
-
-
   handleAlbumClick = (album) => {
     this.props.setCurrentAlbum(album)
-    localStorage.setItem("album_id", album.id)
     this.props.routeProps.push(`/album/${album.id}`)
   }
 
@@ -136,7 +73,7 @@ class GalleryCards extends Component {
     return(
         <div>
         <div className="albumCards2">
-          {this.renderAlbumCard3()}
+          {this.renderAlbumCards()}
         </div>
         </div>
     )
@@ -155,13 +92,5 @@ function mapDispatchToProps (dispatch) {
     }
   }
 }
-
-
-// function mapStateToProps (state) {
-//   return {
-//     current_user: state.users.current_user,
-//   }
-// }
-
 
 export default connect(mapStateToProps, mapDispatchToProps) (GalleryCards)
